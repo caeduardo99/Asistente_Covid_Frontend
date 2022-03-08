@@ -1,13 +1,43 @@
+
 <ion-content>
   <figure>
-<ion-card>
-  <ion-card-content>
-    <ion-input placeholder="Email"></ion-input>
-    <ion-input placeholder="Contraseña"></ion-input>
-  </ion-card-content>
-</ion-card>
-
-<ion-button  expand="full">Continuar</ion-button>
   </figure>
-</ion-content> 
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)"> 
+   <!-- <div id="footer">
+    </div> -->
+    <ion-card id="loginform">
+      <ion-card-header>
+        <ion-card-title>Inicio de Sesión</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+      <ion-card>
+        <ion-item><ion-input  formControlName="email" placeholder="Email"></ion-input></ion-item>
+      </ion-card>
+      <ion-card>
+        <ion-item><ion-input type="password" formControlName="password" placeholder="Password"></ion-input></ion-item>
+      </ion-card>
+      <ion-button shape="round" type= "submit" expand="block">Continuar</ion-button>
+      </ion-card-content>
+      <div class="validation-error">
+        <ng-container *ngFor="let validation of validationMessages.email">
+          <div *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <div class="validation-error">
+        <ng-container *ngFor="let validation of validationMessages.password">
+          <div *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      
+    </ion-card>
+    
+    
+  </form>
+</ion-content>
+
+
 

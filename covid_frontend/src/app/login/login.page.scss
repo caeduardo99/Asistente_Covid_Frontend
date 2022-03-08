@@ -1,6 +1,8 @@
-ion-content {
---background : #262d31;
-}
+ ion-content {
+     --background : #262d31;
+    
+    }
+
 ion-card {
     --background : white;
    
@@ -9,4 +11,31 @@ ion-button{
     --background: #ff0051;
      display:block;
      padding: 500;
+}
+ion-footer{
+    background : #262d31;
+}
+
+.validation-error {
+    color: #ff0051;
+}  
+input:hover{
+    transition: cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+ion-button{
+    margin-top: 80px;
+}
+ion-card-content{
+    --background: #ff0051;
+    
+}
+
+
+@media screen and (max-width:550px){
+    #loginform{
+        margin-top: 50%;
+        position: relative;
+    
+    } 
 }
