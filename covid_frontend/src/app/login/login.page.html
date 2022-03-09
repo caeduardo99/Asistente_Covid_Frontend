@@ -16,7 +16,7 @@
       <ion-card>
         <ion-item><ion-input type="password" formControlName="password" placeholder="Password"></ion-input></ion-item>
       </ion-card>
-      <ion-button shape="round" type= "submit" expand="block">Continuar</ion-button>
+      <ion-button id="Continuar" shape="round" type= "submit" expand="block">Continuar</ion-button>
       </ion-card-content>
       <div class="validation-error">
         <ng-container *ngFor="let validation of validationMessages.email">
@@ -32,12 +32,18 @@
           </div>
         </ng-container>
       </div>
-      
+      {{errorMessage}}
     </ion-card>
-    
-    
   </form>
 </ion-content>
+<div class="post" *ngFor="let post of arrayPosts">
+  <h2>{{post.title}}</h2>
+  <p>{{post.body}}</p>
+</div>
+<ion-footer>
+  <ion-button  shape="round"  fill="outline"  expand="block" >Registrarse</ion-button>
+</ion-footer>
+
 
 
 

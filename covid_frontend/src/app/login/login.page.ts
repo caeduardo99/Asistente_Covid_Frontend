@@ -5,6 +5,8 @@ import {
   FormGroup, 
   Validators 
 } from '@angular/forms';
+import { NavController } from '@ionic/angular';
+import { AuthenticateService } from '../services/authenticate.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +15,7 @@ import {
 })
 export class LoginPage implements OnInit {
   loginForm:FormGroup;
+  arrayPosts:any;
   validationMessages = {
     email: [
       {
@@ -29,8 +32,9 @@ export class LoginPage implements OnInit {
           type: 'minLength', message: 'Tamaño minimo 5 caracteres'
         }],
      };
-     
-  constructor(private formBuilder: FormBuilder) {
+     errorMessage:string="";
+
+  constructor(private formBuilder: FormBuilder,private authService:AuthenticateService, private navCtrl:NavController) {
     this.loginForm = this.formBuilder.group({
       email: new FormControl(
         "",
@@ -48,7 +52,19 @@ export class LoginPage implements OnInit {
   
   ngOnInit() {
    }
-   loginUser(credentials){
-     console.log(credentials);
-   }
+   ionViewDidLoad() {
+    this.getPosts();//Llamamos a la función getPost cuando la vista se cargue
+  }
+   getPosts() { //llamamos a la funcion getPost de nuestro servicio.
+    this.authService.getPosts()
+    .then(data => {
+      this.arrayPosts = data;
+    });
+  }
+    loginUser(){
+      this.authService.getPosts().then(res=>{
+        this.errorMessage="";
+        this.navCtrl.navigateForward("home");
+      })
+    }
 }

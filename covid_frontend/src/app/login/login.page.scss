@@ -7,8 +7,8 @@ ion-card {
     --background : white;
    
 }
-ion-button{
-    --background: #ff0051;
+ ion-button{
+     --background: #ff0051;
      display:block;
      padding: 500;
 }
@@ -23,9 +23,11 @@ input:hover{
     transition: cubic-bezier(0.23, 1, 0.320, 1);
 }
 
-ion-button{
-    margin-top: 80px;
+.Continuar{
+--background: #ff0051;
 }
+
+
 ion-card-content{
     --background: #ff0051;
     
