@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthenticateService {
-  url = 'https://jsonplaceholder.typicode.com/posts';
+  url = 'http://172.16.71.49:8080/api/logins';
  
   constructor(public http: HttpClient) {
 

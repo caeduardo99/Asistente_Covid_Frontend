@@ -1,5 +1,7 @@
 {
   "name": "covid_frontend",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

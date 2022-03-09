@@ -52,15 +52,7 @@ export class LoginPage implements OnInit {
   
   ngOnInit() {
    }
-   ionViewDidLoad() {
-    this.getPosts();//Llamamos a la función getPost cuando la vista se cargue
-  }
-   getPosts() { //llamamos a la funcion getPost de nuestro servicio.
-    this.authService.getPosts()
-    .then(data => {
-      this.arrayPosts = data;
-    });
-  }
+   
     loginUser(){
       this.authService.getPosts().then(res=>{
         this.errorMessage="";
