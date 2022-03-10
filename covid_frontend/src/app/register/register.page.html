@@ -1,0 +1,56 @@
+<ion-content>
+  
+  <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
+  
+    <ion-card id="registerForm">
+      <ion-card-header>
+        <ion-card-title>Registro</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-card>
+          <ion-item><ion-input   placeholder="Cédula"></ion-input></ion-item>
+      </ion-card>
+        <ion-card>
+          <ion-item><ion-input   placeholder="Nombre"></ion-input></ion-item>
+      </ion-card>
+      <ion-card>
+        <ion-item><ion-input   placeholder="Apellidos"></ion-input></ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-item><ion-input   placeholder="Institución"></ion-input></ion-item>
+    </ion-card>
+     <ion-card>
+     <ion-item><ion-input   placeholder="Dirección"></ion-input></ion-item>
+     </ion-card>
+     <ion-card>
+      <ion-item><ion-input   placeholder="Teléfono"></ion-input></ion-item>
+      </ion-card>
+      <ion-card>
+        <ion-item><ion-input  formControlName="email" placeholder="Email"></ion-input></ion-item>
+      </ion-card>
+      <ion-card>
+        <ion-item><ion-input type="password" formControlName="password" placeholder="Password"></ion-input></ion-item>
+      </ion-card>
+      <ion-button id="Continuar" shape="round" type= "submit" expand="block">Continuar</ion-button>
+      </ion-card-content>
+      <div class="validation-error">
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <div *ngIf="registerForm.get('email').hasError(validation.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <div class="validation-error">
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div *ngIf="registerForm.get('password').hasError(validation.type) && (registerForm.get('password').dirty || registerForm.get('password').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      {{errorMessage}}
+    </ion-card>
+    
+     
+  
+  </form>
+</ion-content>

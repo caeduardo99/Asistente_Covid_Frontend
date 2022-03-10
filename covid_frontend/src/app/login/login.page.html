@@ -36,12 +36,8 @@
     </ion-card>
   </form>
 </ion-content>
-<div class="post" *ngFor="let post of arrayPosts">
-  <h2>{{post.title}}</h2>
-  <p>{{post.body}}</p>
-</div>
 <ion-footer>
-  <ion-button  shape="round"  fill="outline"  expand="block" >Registrarse</ion-button>
+  <ion-button (click)="gotoRegister()" shape="round" type= "submit" expand="block">Registrarse</ion-button>
 </ion-footer>
 
 

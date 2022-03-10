@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { 
   FormBuilder, 
   FormControl, 
@@ -7,6 +8,7 @@ import {
 } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +16,9 @@ import { AuthenticateService } from '../services/authenticate.service';
   styleUrls: ['./login.page.scss']
 })
 export class LoginPage implements OnInit {
+  
   loginForm:FormGroup;
-  arrayPosts:any;
+  
   validationMessages = {
     email: [
       {
@@ -34,7 +37,7 @@ export class LoginPage implements OnInit {
      };
      errorMessage:string="";
 
-  constructor(private formBuilder: FormBuilder,private authService:AuthenticateService, private navCtrl:NavController) {
+  constructor(private formBuilder: FormBuilder,private authService:AuthenticateService, private navCtrl:NavController, private storage:Storage) {
     this.loginForm = this.formBuilder.group({
       email: new FormControl(
         "",
@@ -56,7 +59,12 @@ export class LoginPage implements OnInit {
     loginUser(){
       this.authService.getPosts().then(res=>{
         this.errorMessage="";
+        this.storage.set("isUserLoggedIn",true);
         this.navCtrl.navigateForward("home");
       })
+    }
+
+    gotoRegister() {
+      this.navCtrl.navigateForward("/register");
     }
 }
