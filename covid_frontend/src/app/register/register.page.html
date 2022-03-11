@@ -1,29 +1,37 @@
+
+<!-- Back button with a default href -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
-  
-  <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value)">
-  
+  <form [formGroup]="registerForm" (ngSubmit)="addPosts()">
     <ion-card id="registerForm">
       <ion-card-header>
         <ion-card-title>Registro</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <ion-card>
-          <ion-item><ion-input   placeholder="Cédula"></ion-input></ion-item>
+          <ion-item><ion-input  formControlName="cedula" placeholder="Cédula"></ion-input></ion-item>
       </ion-card>
         <ion-card>
-          <ion-item><ion-input   placeholder="Nombre"></ion-input></ion-item>
+          <ion-item><ion-input formControlName="nombre"  placeholder="Nombre"></ion-input></ion-item>
       </ion-card>
       <ion-card>
-        <ion-item><ion-input   placeholder="Apellidos"></ion-input></ion-item>
+        <ion-item><ion-input  formControlName="apellido" placeholder="Apellidos"></ion-input></ion-item>
     </ion-card>
     <ion-card>
       <ion-item><ion-input   placeholder="Institución"></ion-input></ion-item>
     </ion-card>
      <ion-card>
-     <ion-item><ion-input   placeholder="Dirección"></ion-input></ion-item>
+     <ion-item><ion-input  formControlName="direccion" placeholder="Dirección"></ion-input></ion-item>
      </ion-card>
      <ion-card>
-      <ion-item><ion-input   placeholder="Teléfono"></ion-input></ion-item>
+      <ion-item><ion-input formControlName="telefono"  placeholder="Teléfono"></ion-input></ion-item>
       </ion-card>
       <ion-card>
         <ion-item><ion-input  formControlName="email" placeholder="Email"></ion-input></ion-item>
@@ -33,6 +41,50 @@
       </ion-card>
       <ion-button id="Continuar" shape="round" type= "submit" expand="block">Continuar</ion-button>
       </ion-card-content>
+      <div class="validation-error">
+        
+        <ng-container *ngFor="let validation of validation_messages.cedula">
+          <div *ngIf="registerForm.get('cedula').hasError(validation.type) && (registerForm.get('cedula').dirty || registerForm.get('cedula').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <div class="validation-error">
+        
+        <ng-container *ngFor="let validation of validation_messages.nombre">
+          <div *ngIf="registerForm.get('nombre').hasError(validation.type) && (registerForm.get('nombre').dirty || registerForm.get('nombre').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <div class="validation-error">
+        <ng-container *ngFor="let validation of validation_messages.apellido">
+          <div
+            *ngIf="
+              registerForm.get('apellido').hasError(validation.type) &&
+              (registerForm.get('apellido').dirty ||
+                registerForm.get('apellido').touched)
+            "
+          >
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <div class="validation-error">
+        <ng-container *ngFor="let validation of validation_messages.direccion">
+          <div *ngIf="registerForm.get('direccion').hasError(validation.type) && (registerForm.get('direccion').dirty || registerForm.get('direccion').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <div class="validation-error">
+        <ng-container *ngFor="let validation of validation_messages.telefono">
+          <div *ngIf="registerForm.get('telefono').hasError(validation.type) && (registerForm.get('telefono').dirty || registerForm.get('telefono').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
       <div class="validation-error">
         <ng-container *ngFor="let validation of validation_messages.email">
           <div *ngIf="registerForm.get('email').hasError(validation.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)">
@@ -47,6 +99,14 @@
           </div>
         </ng-container>
       </div>
+      
+      
+
+
+
+
+
+      
       {{errorMessage}}
     </ion-card>
     

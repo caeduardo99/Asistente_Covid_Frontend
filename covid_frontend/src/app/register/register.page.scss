@@ -2,15 +2,21 @@ ion-content {
     --background : #262d31;
    
    }
-
+ion-toolbar{
+   // --background : #262d31;
+}
 ion-card {
    --background : white;
   
 }
 ion-button{
     --background: #ff0051;
+
     display:block;
     padding: 500;
+
+    --color: white;
+
 }
 ion-footer{
    background : #262d31;
@@ -32,7 +38,9 @@ input:hover{
 --background: #ff0051;
 }
 
-
+.Back{
+ color:#262d31;
+}
 ion-card-content{
    --background: #ff0051;
    

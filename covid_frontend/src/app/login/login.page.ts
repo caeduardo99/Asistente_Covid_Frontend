@@ -56,13 +56,13 @@ export class LoginPage implements OnInit {
   ngOnInit() {
    }
    
-    loginUser(){
-      this.authService.getPosts().then(res=>{
-        this.errorMessage="";
-        this.storage.set("isUserLoggedIn",true);
-        this.navCtrl.navigateForward("home");
-      })
-    }
+ 
+
+
+  getPosts() { //llamamos a la funcion getPost de nuestro servicio.
+    this.authService.getPosts()
+    ;
+  }
 
     gotoRegister() {
       this.navCtrl.navigateForward("/register");

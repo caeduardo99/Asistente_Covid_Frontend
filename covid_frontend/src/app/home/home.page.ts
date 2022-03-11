@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { File } from '@awesome-cordova-plugins/file/ngx';
+
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -10,16 +10,16 @@ import { HttpClient } from '@angular/common/http';
 export class HomePage {
   
   private file: File;
+  
   constructor(private http: HttpClient) {}
-  uploadPhoto(fileChangeEvent) {
-    // Get a reference to the file that has just been added to the input
-    const photo = fileChangeEvent.target.files[0];
-    // Create a form data object using the FormData API
-    let formData = new FormData();
-    // Add the file that was just added to the form data
-    formData.append("photo", photo, photo.name);
-    // POST formData to server using HttpClient
+
+
+  onFileChange(fileChangeEvent) {
+    this.file = fileChangeEvent.target.files[0];
   }
+
+
+ 
   
   // onFileChange(fileChangeEvent) {
   //   this.file = fileChangeEvent.target.files[0];
