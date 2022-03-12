@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-
+import { AlertController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -8,32 +10,46 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  
+  public previsualizacion: string;
+  public archivos: any = [];
   private file: File;
-  
-  constructor(private http: HttpClient) {}
 
+  constructor(
+    private http: HttpClient,
+    private sanitizer: DomSanitizer,
+    public alertController: AlertController,
+    private menu: MenuController
+  ) {}
 
-  onFileChange(fileChangeEvent) {
-    this.file = fileChangeEvent.target.files[0];
+  capturarFile(event: any) {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      console.log(imagen);
+    });
+    this.archivos.push(archivoCapturado);
+    // console.log(event.target.files);
   }
 
-
- 
-  
-  // onFileChange(fileChangeEvent) {
-  //   this.file = fileChangeEvent.target.files[0];
-  // }
-  // async submitForm() {
-  //  let formData = new FormData();
-  // // formData.append("photo", this.file, this.file.name);
-  //  this.http.post("http://localhost:3000/upload", formData).subscribe((response) => {
-  //    console.log(response);
-  //  });
-  
-  }
-
-
-
-
-
+  extraerBase64 = async ($event: any) =>
+    new Promise((resolve, reject) => {
+      try {
+        const unsafeImg = window.URL.createObjectURL($event);
+        const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+        const reader = new FileReader();
+        reader.readAsDataURL($event);
+        reader.onload = () => {
+          resolve({
+            base: reader.result,
+          });
+        };
+        reader.onerror = (error) => {
+          resolve({
+            base: null,
+          });
+        };
+      } catch (e) {
+        return null;
+      }
+    });
+}

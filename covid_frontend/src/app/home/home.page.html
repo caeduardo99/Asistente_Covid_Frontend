@@ -1,24 +1,30 @@
+<ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-menu-button auto-hide="false">
 
+        </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+</ion-toolbar>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <img src="assets\images\home_img.webp">
-    <ion-card-header>
-      <ion-card-title>Asistente de detección de Covid</ion-card-title>
-    </ion-card-header>
-  
-    <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
-      <div class="container">
-        <!-- <img [src]="imgURL" height="200" width="200" /> -->
+    <ion-card>
 
-      </div>
-    </ion-card-content>
+        <img src="assets\images\home_img.webp">
+        <ion-card-header>
+            <ion-card-title>Asistente de detección de Covid</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            Deteccion de COVID 19 mediante Inteligencia Artificial tomando los valores de la radiografia y mostrando el diagnostico.
+            <div class="container">
+                <!-- <img [src]="imgURL"  /> -->
+            </div>
+        </ion-card-content>
+        <input height="200" width="200" type="file" (change)="capturarFile($event)">
+        <div>
+            <img [src]="previsualizacion" alt="">
+        </div>
+        <ion-button (click)="presentAlert()"></ion-button>
+    </ion-card>
 
-    <input type="file" (change)="onFileChange($event)">
-    
-  </ion-card>
-  
 </ion-content>
-
