@@ -20,7 +20,20 @@ export class HomePage {
     public alertController: AlertController,
     private menu: MenuController
   ) {}
+  
+  openFirst() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
 
+  openEnd() {
+    this.menu.open('end');
+  }
+
+  openCustom() {
+    this.menu.enable(true, 'custom');
+    this.menu.open('custom');
+  }
   capturarFile(event: any) {
     const archivoCapturado = event.target.files[0];
     this.extraerBase64(archivoCapturado).then((imagen: any) => {

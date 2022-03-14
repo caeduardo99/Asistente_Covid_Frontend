@@ -59,10 +59,10 @@ export class LoginPage implements OnInit {
  
 
 
-  getPosts() { //llamamos a la funcion getPost de nuestro servicio.
-    this.authService.getPosts()
+   PedirDatos() { //llamamos a la funcion getPost de nuestro servicio.
+    this.authService.getPosts(this.loginForm.value);
     ;
-  }
+   }
 
     gotoRegister() {
       this.navCtrl.navigateForward("/register");

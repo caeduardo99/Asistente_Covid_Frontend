@@ -3,17 +3,13 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () =>
-    import('./home/home.module').then( m => m.HomePageModule),
-   // canActivate: [LoginGuard]
-  },
+ 
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'home/menu',
     pathMatch: 'full'
   },
+
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
@@ -22,6 +18,11 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'menu',
+    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule),
+   // canActivate: [LoginGuard]
   },
 ];
 

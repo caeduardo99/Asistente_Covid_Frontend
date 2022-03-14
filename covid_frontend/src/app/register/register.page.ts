@@ -1,13 +1,16 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import {
   FormBuilder,
   FormControl,
   FormGroup,
-  Validators
+  Validators,
+  
 } from "@angular/forms";
 import { AuthenticateService } from "../services/authenticate.service";
-import { NavController } from "@ionic/angular";
+import { NavController,AlertController } from "@ionic/angular";
 import { Storage } from '@ionic/storage-angular';
+import { Usuario } from "../model/Usuario";
 
 @Component({
   selector: "app-register",
@@ -16,6 +19,7 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class RegisterPage {
   registerForm: FormGroup;
+  usuario: Usuario;
   validation_messages = {
     email: [
       { type: "required", message: " El email es requerido" },
@@ -31,6 +35,10 @@ export class RegisterPage {
     ],
     apellido: [
       { type: "required", message: " El apellido es requerido" }
+     
+    ],
+    institucion: [
+      { type: "required", message: " La institucion es requerida" }
      
     ],
     cedula: [
@@ -51,8 +59,10 @@ export class RegisterPage {
     private formBuilder: FormBuilder,
     private authService: AuthenticateService,
     private navCtrl: NavController,
-    private storage: Storage
-  ) {
+    private storage: Storage,
+    private router: Router,
+    public alertController: AlertController
+     ) {
     this.registerForm = this.formBuilder.group({
       cedula: new FormControl(
         "",
@@ -68,9 +78,17 @@ export class RegisterPage {
           Validators.maxLength(25),
           Validators.pattern("[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$")])
       ),
+
       apellido: new FormControl(
         "",
         Validators.compose([Validators.required,Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(25),
+          Validators.pattern("[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$")])
+      ),
+      institucion: new FormControl(
+        "",
+        Validators.compose([Validators.required, Validators.required,
           Validators.minLength(3),
           Validators.maxLength(25),
           Validators.pattern("[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$")])
@@ -98,9 +116,16 @@ export class RegisterPage {
     });
   }
 
-  
-  addPosts() {
-    this.authService.getPosts()
-    ;
+ 
+  goToLogin(){
+    this.router.navigate(['/login'], { skipLocationChange: true });
   }
+
+
+  guardarDatos(){
+    this.authService.addPost(this.registerForm.value);
+    
+   
+  }
+
 }

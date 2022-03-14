@@ -3,13 +3,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-back-button (click)="goToLogin()" defaultHref="back-login"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="registerForm" (ngSubmit)="addPosts()">
+  <form [formGroup]="registerForm" (ngSubmit)="guardarDatos()">
     <ion-card id="registerForm">
       <ion-card-header>
         <ion-card-title>Registro</ion-card-title>
@@ -25,7 +25,7 @@
         <ion-item><ion-input  formControlName="apellido" placeholder="Apellidos"></ion-input></ion-item>
     </ion-card>
     <ion-card>
-      <ion-item><ion-input   placeholder="Institución"></ion-input></ion-item>
+      <ion-item><ion-input formControlName="institucion"   placeholder="Institución"></ion-input></ion-item>
     </ion-card>
      <ion-card>
      <ion-item><ion-input  formControlName="direccion" placeholder="Dirección"></ion-input></ion-item>
@@ -71,6 +71,19 @@
         </ng-container>
       </div>
       <div class="validation-error">
+        <ng-container *ngFor="let validation of validation_messages.institucion">
+          <div
+            *ngIf="
+              registerForm.get('institucion').hasError(validation.type) &&
+              (registerForm.get('institucion').dirty ||
+                registerForm.get('institucion').touched)
+            "
+          >
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <div class="validation-error">
         <ng-container *ngFor="let validation of validation_messages.direccion">
           <div *ngIf="registerForm.get('direccion').hasError(validation.type) && (registerForm.get('direccion').dirty || registerForm.get('direccion').touched)">
             {{ validation.message }}
@@ -98,15 +111,7 @@
             {{ validation.message }}
           </div>
         </ng-container>
-      </div>
-      
-      
-
-
-
-
-
-      
+      </div>  
       {{errorMessage}}
     </ion-card>
     

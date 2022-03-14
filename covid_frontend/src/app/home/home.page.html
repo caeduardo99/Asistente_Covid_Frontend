@@ -1,18 +1,18 @@
-<ion-toolbar>
+<ion-header>
+  <ion-toolbar>
     <ion-buttons slot="start">
-        <ion-menu-button auto-hide="false">
-
-        </ion-menu-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Home</ion-title>
-</ion-toolbar>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
+  
     <ion-card>
 
         <img src="assets\images\home_img.webp">
         <ion-card-header>
-            <ion-card-title>Asistente de detección de Covid</ion-card-title>
+            <ion-card-title>Asistente de detección de COVID</ion-card-title>
         </ion-card-header>
         <ion-card-content>
             Deteccion de COVID 19 mediante Inteligencia Artificial tomando los valores de la radiografia y mostrando el diagnostico.
@@ -20,11 +20,21 @@
                 <!-- <img [src]="imgURL"  /> -->
             </div>
         </ion-card-content>
-        <input height="200" width="200" type="file" (change)="capturarFile($event)">
+        <input  type="file" (change)="capturarFile($event)">
         <div>
-            <img [src]="previsualizacion" alt="">
+            <img class="radiografia" height="300" width="300" [src]="previsualizacion" alt="">
         </div>
-        <ion-button (click)="presentAlert()"></ion-button>
+        <ion-item>
+          <ion-range min="20" max="80" step="2">
+            <ion-icon size="small" slot="start" name="heart-outline"></ion-icon>
+            <ion-icon slot="end" name="thermometer-outline"></ion-icon>
+          </ion-range>
+        </ion-item>
+        <!-- <ion-button (click)="presentAlert()"></ion-button> -->
     </ion-card>
-
+    
+  
 </ion-content>
+
+<ion-icon name="medkit-outline"></ion-icon>
+<ion-icon name="thermometer-outline"></ion-icon>
