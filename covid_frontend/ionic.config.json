@@ -1,7 +1,9 @@
 {
   "name": "covid_frontend",
   "integrations": {
-    "cordova": {}
+    "capacitor": {},
+     "cordova": {}
+   
   },
   "type": "angular"
 }

@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavParams } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MenuController } from '@ionic/angular';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
+
 
 @Component({
   selector: 'app-home',
@@ -13,13 +16,19 @@ export class HomePage {
   public previsualizacion: string;
   public archivos: any = [];
   private file: File;
-
+  address: string;
+  latitude: number;
+  longitude: number;
+  accuracy: number;
   constructor(
     private http: HttpClient,
     private sanitizer: DomSanitizer,
     public alertController: AlertController,
-    private menu: MenuController
+    private menu: MenuController,
+    
+    
   ) {}
+ 
   
   openFirst() {
     this.menu.enable(true, 'first');
@@ -65,4 +74,6 @@ export class HomePage {
         return null;
       }
     });
+
+   
 }

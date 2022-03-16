@@ -2,7 +2,7 @@
 <ion-content>
   <figure>
   </figure>
-  <form [formGroup]="loginForm" (ngSubmit)="PedirDatos()"> 
+  <form [formGroup]="loginForm" (ngSubmit)="login($event)"> 
    <!-- <div id="footer">
     </div> -->
     <ion-card id="loginform">
@@ -35,6 +35,7 @@
       {{errorMessage}}
     </ion-card>
   </form>
+  
 </ion-content>
 <ion-footer>
   <ion-button (click)="gotoRegister()" shape="round" expand="block">Registrarse</ion-button>

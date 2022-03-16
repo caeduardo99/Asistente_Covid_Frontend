@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'covid_frontend.com',
+  appId: 'io.ionic.starter',
   appName: 'covid_frontend',
   webDir: 'www',
   bundledWebRuntime: false,
