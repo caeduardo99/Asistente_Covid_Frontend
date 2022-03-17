@@ -9,6 +9,7 @@ export class AuthenticateService {
   private _usuario: Usuario;
   url1 = 'http://172.16.71.49:8080/api/usuario';
   url2 = "http://172.16.71.49:8080/"
+
   private _token: string;
  
 
@@ -109,6 +110,20 @@ export class AuthenticateService {
       return true;
     }
     return false;
+  }
+
+  logout(): void {
+    this._token = null;
+    this._usuario = null;
+    sessionStorage.clear();
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("usuario");
+  }
+
+
+
+  public post(url:string, body){
+    return this.http.post(url,body); // POST  
   }
 
 }

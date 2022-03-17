@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 // import { Geolocation } from '@ionic-native/geolocation/ngx';
 // import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
-
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
@@ -25,7 +25,7 @@ import { Camera  } from '@awesome-cordova-plugins/camera/ngx';
   AppRoutingModule,
   HttpClientModule,
   IonicStorageModule.forRoot(),
-
+  SweetAlert2Module.forRoot(),
     ],
   providers: [Camera,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }],
   bootstrap: [AppComponent],

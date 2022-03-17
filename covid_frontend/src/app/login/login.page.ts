@@ -11,7 +11,7 @@ import { AuthenticateService } from '../services/authenticate.service';
 import { Storage } from '@ionic/storage-angular';
 import { Usuario } from '../model/usuario';
 import { Router } from "@angular/router";
-import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -60,7 +60,11 @@ export class LoginPage implements OnInit {
    }
   
   ngOnInit() {
-    
+    if (this.authService.isAuthenticated()) {
+      this.router.navigateByUrl("/login");
+     
+      
+    }
 
    }
    
@@ -80,38 +84,26 @@ export class LoginPage implements OnInit {
         this.authService.guardarToken(response.access_token);
         let usuario = this.authService.usuario;
    
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/menu/home"]);
 
        
-        Swal.fire(
-          "vali",
-          `Hola ${usuario.email}, has iniciado sesión con éxito!`,
-          "success"
-        );
+        
         this.cargado = false;
       },
       (err) => {
        
         if (err.status == 400) {
-          Swal.fire("Error Login", "Usuario o clave incorrectas!", "error");
+     //     Swal.fire("Error Login", "Usuario o clave incorrectas!", "error");
         }
         if (err.status == 0) {
-          Swal.fire("Servicio", "Nod Disponible", "error");
+      //    Swal.fire("Servicio", "No Disponible", "error");
         }
         this.cargado = false;
       });
     
-  
-  
      
   }
 }
-
-
-   PedirDatos() { //llamamos a la funcion getPost de nuestro servicio.
-    this.authService.getPosts(this.loginForm.value);
-    ;
-   }
 
     gotoRegister() {
       this.navCtrl.navigateForward("/register");

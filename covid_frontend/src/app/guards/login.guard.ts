@@ -7,23 +7,44 @@ import {
 } from "@angular/router";
 import { Observable } from "rxjs";
 import { Router } from "@angular/router";
-import { Storage } from "@ionic/storage";
 
+import { AuthenticateService } from '../services/authenticate.service';
 @Injectable({
   providedIn: 'root'
 })
 
 export class LoginGuard implements CanActivate {
-  constructor(private storage: Storage, private router: Router) {}
+  constructor(private authService:AuthenticateService ,private router: Router) {}
 
-  async canActivate() {
-    await this.storage.create();
-    const isUserLoggedIn = await this.storage.get("isUserLoggedIn"); 
-    if (isUserLoggedIn) {
+  canActivate(
+   
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    if (this.authService.isAuthenticated() ) {
+      if (this.isTokenExpirado()) {
+        this.authService.logout();
+        this.router.navigate(['/']);
+        alert("no autorizado");
+        return false;
+      //  this.router.navigateByUrl("/login");
+      }
       return true;
-    } else {
-      this.router.navigateByUrl("/login");
     }
+    this.router.navigate(['/']);
+    return false;
   }
+
+  isTokenExpirado(): boolean {
+    let token = this.authService.token;
+    let payload = this.authService.obtenerDatosToken(token);
+    let now = new Date().getTime() / 1000;
+    if (payload.exp < now) {
+      return true;
+    }
+    return false;
+  }
+   
+ 
+  
 }
 
