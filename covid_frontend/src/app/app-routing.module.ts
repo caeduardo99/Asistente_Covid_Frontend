@@ -8,7 +8,7 @@ const routes: Routes = [
  
   {
     path: '',
-    component: LoginPage,
+    
     redirectTo: '/menu/home',
     pathMatch: 'full'
   },

@@ -2,7 +2,7 @@ import { NgModule,LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
 
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 import { AlertController, IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { AppComponent } from './app.component';
