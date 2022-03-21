@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../model/Usuario';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthenticateService {
   private _usuario: Usuario;
-  url1 = 'http://172.16.71.49:8080/api/usuario';
-  url2 = "http://172.16.71.49:8080/"
-
+  url1 = 'https://ia-backend-covid.herokuapp.com/api/usuario';
+  url2 = "https://ia-backend-covid.herokuapp.com/"
   private _token: string;
  
 

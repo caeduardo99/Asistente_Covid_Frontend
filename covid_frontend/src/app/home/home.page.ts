@@ -78,17 +78,20 @@ export class HomePage {
       }
     });
 
+    
+    
+
     subirArchivo(): any {
       try {
-       
+        this.loading = true;
         const formularioDeDatos = new FormData();
         this.archivos.forEach(archivo => {
-          formularioDeDatos.append('files', archivo)
-          console.log(archivo);
+          formularioDeDatos.append('archivo', archivo)
         })
-       
+        
         this.authService.post("http://172.16.71.49:8080/api/upload", formularioDeDatos)
-          .subscribe(res => {  
+          .subscribe(res => {
+            this.loading = false;
             console.log('Respuesta del servidor', res);
   
           }, () => {
@@ -101,4 +104,5 @@ export class HomePage {
   
       }
     }
+
 }

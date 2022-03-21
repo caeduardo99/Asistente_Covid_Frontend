@@ -35,7 +35,6 @@
     "@ionic/storage-angular": "^3.0.6",
     "cordova-plugin-camera": "^6.0.0",
     "rxjs": "~6.6.0",
-    "sweetalert2": "^11.4.4",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },

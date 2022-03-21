@@ -7,14 +7,13 @@ import {
 } from "@angular/common/http";
 
 import { Observable, throwError } from "rxjs";
-import { AuthService } from "../auth.service";
-import swal from "sweetalert2";
+import { AuthenticateService } from "../../services/authenticate.service";
 import { catchError } from "rxjs/operators";
 import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService:AuthenticateService, private router: Router) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -26,19 +25,19 @@ export class AuthInterceptor implements HttpInterceptor {
           alert("ERRO 401");
           if (this.authService.isAuthenticated()) {
             this.authService.logout();
-          }
-        //  alert("ERRO 401");
-          this.router.navigate(["/"]);
+          }       
+          this.router.navigate(["/menu/home"]);
         }
 
         if (e.status == 403) {
-          swal.fire(
-            "Acceso denegado",
-            `Hola ${this.authService.usuario.username} no tienes acceso a este recurso!`,
-            "warning"
-          );
+          // Swal.fire(
+          //   "Acceso denegado",
+          //   `Hola ${this.authService.usuario.email} no tienes acceso a este recurso!`,
+          //   "warning"
+          // );
+
           alert("ERRO 403");
-          this.router.navigate(["/inicio"]);
+          this.router.navigate(["/login"]);
         }
         return throwError(e);
       })

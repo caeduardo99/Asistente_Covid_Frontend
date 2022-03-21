@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AlertController } from '@ionic/angular';
 import { 
   FormBuilder, 
   FormControl, 
@@ -11,7 +11,7 @@ import { AuthenticateService } from '../services/authenticate.service';
 import { Storage } from '@ionic/storage-angular';
 import { Usuario } from '../model/usuario';
 import { Router } from "@angular/router";
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -41,10 +41,12 @@ export class LoginPage implements OnInit {
      };
      errorMessage:string="";
 
-  constructor(private formBuilder: FormBuilder,private authService:AuthenticateService, private navCtrl:NavController, private storage:Storage,private router: Router) {
+  constructor(private formBuilder: FormBuilder,private authService:AuthenticateService, private navCtrl:NavController, private storage:Storage,private router: Router,private alertController: AlertController) {
     this.usuario = new Usuario();
     this.loginForm = this.formBuilder.group({
      
+
+      
       email: new FormControl(
         "",
         Validators.compose([
@@ -62,9 +64,18 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     if (this.authService.isAuthenticated()) {
       this.router.navigateByUrl("/login");
-     
+      this.alertController.create({
+        message: 'Ya estas autenticado',
+        buttons: ['OK']
+      }).then(res => {
+  
+        res.present();
+  
+      });
+
       
-    }
+    };
+
 
    }
    
@@ -86,20 +97,37 @@ export class LoginPage implements OnInit {
    
         this.router.navigate(["/menu/home"]);
 
-       
+        this.alertController.create({
+          message: 'Inicio de Sesión Exitoso',
+          buttons: ['OK']
+        }).then(res => {
+    
+          res.present();
+    
+        }); 
         
         this.cargado = false;
       },
       (err) => {
        
         if (err.status == 400) {
-     //     Swal.fire("Error Login", "Usuario o clave incorrectas!", "error");
+
+          this.alertController.create({
+            message: 'Email o Contraseña Incorrectas',
+            buttons: ['OK']
+          }).then(res => {
+      
+            res.present();
+      
+          });        
         }
         if (err.status == 0) {
-      //    Swal.fire("Servicio", "No Disponible", "error");
+     
         }
         this.cargado = false;
-      });
+      }
+      
+      );
     
      
   }
@@ -107,5 +135,6 @@ export class LoginPage implements OnInit {
 
     gotoRegister() {
       this.navCtrl.navigateForward("/register");
+      
     }
 }
