@@ -11,7 +11,7 @@ import { AuthenticateService } from '../services/authenticate.service';
 import { Storage } from '@ionic/storage-angular';
 import { Usuario } from '../model/usuario';
 import { Router } from "@angular/router";
-
+import { Geolocation } from '@capacitor/geolocation';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -63,20 +63,15 @@ export class LoginPage implements OnInit {
   
   ngOnInit() {
     if (this.authService.isAuthenticated()) {
-      this.router.navigateByUrl("/login");
+
+      this.router.navigateByUrl("/menu/home");
       this.alertController.create({
         message: 'Ya estas autenticado',
-        buttons: ['OK']
+        buttons: ['OK']       
       }).then(res => {
-  
         res.present();
-  
-      });
-
-      
+      }); 
     };
-
-
    }
    
    login(event: Event): void {
@@ -95,7 +90,7 @@ export class LoginPage implements OnInit {
         this.authService.guardarToken(response.access_token);
         let usuario = this.authService.usuario;
    
-        this.router.navigate(["/menu/home"]);
+        this.router.navigate(["menu/home"]);
 
         this.alertController.create({
           message: 'Inicio de Sesión Exitoso',
@@ -127,14 +122,10 @@ export class LoginPage implements OnInit {
         this.cargado = false;
       }
       
-      );
-    
-     
+      );    
   }
 }
-
     gotoRegister() {
-      this.navCtrl.navigateForward("/register");
-      
+      this.navCtrl.navigateForward("/register");     
     }
 }

@@ -1,8 +1,6 @@
 import { NgModule,LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
-
-
 import { AlertController, IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { AppComponent } from './app.component';
@@ -11,7 +9,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { AuthInterceptor } from './login/interceptors/logininterceptions';
 import { TokenInterceptor } from './login/interceptors/tokeninterceptions';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +23,7 @@ import { FormsModule } from '@angular/forms';
   IonicStorageModule.forRoot(),
   FormsModule,
   RouterModule,
-
+  ReactiveFormsModule
     ],
   providers: 
   [

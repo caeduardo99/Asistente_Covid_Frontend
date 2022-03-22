@@ -2,13 +2,13 @@ import { Injectable } from "@angular/core";
 import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  UrlTree,
+  Router,
   CanActivate
 } from "@angular/router";
 import { Observable } from "rxjs";
-import { Router } from "@angular/router";
 
 import { AuthenticateService } from '../services/authenticate.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,14 +23,14 @@ export class LoginGuard implements CanActivate {
     if (this.authService.isAuthenticated() ) {
       if (this.isTokenExpirado()) {
         this.authService.logout();
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
         alert("no autorizado");
         return false;
       //  this.router.navigateByUrl("/login");
       }
       return true;
     }
-    this.router.navigate(['/']);
+    this.router.navigate(['/menu/home']);
     return false;
   }
 

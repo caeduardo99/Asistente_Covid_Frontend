@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlertController, NavParams } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MenuController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
+import { Geolocation } from '@capacitor/geolocation';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { AuthenticateService } from '../services/authenticate.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   public previsualizacion: string;
   public archivos: any = [];
   public loading: boolean
@@ -28,22 +29,15 @@ export class HomePage {
     private authService:AuthenticateService
     
     
+
+    
   ) {}
  
   
-  openFirst() {
-    this.menu.enable(true, 'first');
-    this.menu.open('first');
-  }
-
-  openEnd() {
-    this.menu.open('end');
-  }
-
-  openCustom() {
-    this.menu.enable(true, 'custom');
-    this.menu.open('custom');
-  }
+  ngOnInit() {
+    
+   }
+ 
 
   
   capturarFile(event: any) {
@@ -89,7 +83,7 @@ export class HomePage {
           formularioDeDatos.append('archivo', archivo)
         })
         
-        this.authService.post("http://172.16.71.49:8080/api/upload", formularioDeDatos)
+        this.authService.post("https://ia-backend-covid.herokuapp.com/api/upload", formularioDeDatos)
           .subscribe(res => {
             this.loading = false;
             console.log('Respuesta del servidor', res);

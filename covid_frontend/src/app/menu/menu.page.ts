@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { NavController } from "@ionic/angular";
 import { Storage } from '@ionic/storage';
-
+import { AuthenticateService } from ".././services/authenticate.service";
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
@@ -10,16 +11,24 @@ import { Storage } from '@ionic/storage';
 })
 export class MenuPage implements OnInit {
 
-  constructor(private menu:MenuController, private navCtrl: NavController,private storage:Storage) { }
+  constructor(private menu:MenuController, private navCtrl: NavController,private storage:Storage,private auth_service:AuthenticateService, private router:Router ) { }
 
   ngOnInit() {
   }
  closeMenu(){
    this.menu.close()
  }
- logout() {
-  this.storage.create();
-  this.storage.remove("isUserLoggedIn");
-  this.navCtrl.navigateRoot("/login");
+  salir(){
+  let username = this.auth_service.usuario.email;
+  this.auth_service.logout();
+
+  this.router.navigate(['/']);
+
 }
+
+//  logout() {
+//   this.storage.create();
+//   this.storage.remove("isUserLoggedIn");
+//   this.navCtrl.navigateRoot("/login");
+// }
 }

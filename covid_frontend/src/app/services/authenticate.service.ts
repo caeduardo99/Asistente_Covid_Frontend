@@ -8,6 +8,8 @@ import { Usuario } from '../model/Usuario';
 })
 
 export class AuthenticateService {
+  
+  // Definicion de variables para consumo de apis
   private _usuario: Usuario;
   url1 = 'https://ia-backend-covid.herokuapp.com/api/usuario';
   url2 = "https://ia-backend-covid.herokuapp.com/"
@@ -18,7 +20,7 @@ export class AuthenticateService {
   constructor(public http: HttpClient) {
     
    }
-
+   // Creación del Metodo para el Registro del Usuario
    addPost(data) {
     return new Promise((resolve, reject) => {
       const httpHeaders= new HttpHeaders({
@@ -107,7 +109,7 @@ export class AuthenticateService {
 
   isAuthenticated(): boolean {
     let payload = this.obtenerDatosToken(this.token);
-    if (payload != null && payload.user_name && payload.user_name.length > 0) {
+    if (payload != null && payload.email && payload.email.length > 0) {
       return true;
     }
     return false;
@@ -121,7 +123,12 @@ export class AuthenticateService {
     sessionStorage.removeItem("usuario");
   }
 
-
+  hasRole(role: string): boolean {
+    if (this.usuario.roles.includes(role)) {
+      return true;
+    }
+    return false;
+  }
 
   public post(url:string, body){
     return this.http.post(url,body); // POST  

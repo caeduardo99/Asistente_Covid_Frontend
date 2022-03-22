@@ -22,7 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError((e) => {
         if (e.status == 401) {
-          alert("ERRO 401");
+          alert("Error 401");
           if (this.authService.isAuthenticated()) {
             this.authService.logout();
           }       
@@ -30,14 +30,10 @@ export class AuthInterceptor implements HttpInterceptor {
         }
 
         if (e.status == 403) {
-          // Swal.fire(
-          //   "Acceso denegado",
-          //   `Hola ${this.authService.usuario.email} no tienes acceso a este recurso!`,
-          //   "warning"
-          // );
+         
 
-          alert("ERRO 403");
-          this.router.navigate(["/login"]);
+          alert("Error 403");
+          this.router.navigate(["/"]);
         }
         return throwError(e);
       })
