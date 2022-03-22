@@ -11,15 +11,17 @@ import { AuthenticateService } from "../services/authenticate.service";
 import { NavController,AlertController } from "@ionic/angular";
 import { Storage } from '@ionic/storage-angular';
 import { Usuario } from "../model/Usuario";
-
+import { Geolocation ,Geoposition } from '@awesome-cordova-plugins/geolocation/ngx';
 @Component({
   selector: "app-register",
   templateUrl: "./register.page.html",
   styleUrls: ["./register.page.scss"]
 })
-export class RegisterPage {
+export class RegisterPage implements OnInit {
   registerForm: FormGroup;
   usuario: Usuario;
+  lat:number
+  lon:number
   validation_messages = {
     email: [
       { type: "required", message: " El email es requerido" },
@@ -61,7 +63,8 @@ export class RegisterPage {
     private navCtrl: NavController,
     private storage: Storage,
     private router: Router,
-    public alertController: AlertController
+    public alertController: AlertController,
+    public geolocation:Geolocation
      ) {
     this.registerForm = this.formBuilder.group({
       cedula: new FormControl(
@@ -127,5 +130,15 @@ export class RegisterPage {
     
    
   }
+
+  ngOnInit() {
+    this.geolocation.getCurrentPosition().then((geoposition: Geoposition)=>{
+      this.lat = geoposition.coords.latitude;
+      this.lon = geoposition.coords.longitude;
+
+      console.log(this.lat);
+      console.log(this.lon);
+    });
+   }
 
 }

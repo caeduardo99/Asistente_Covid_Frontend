@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MenuController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
-import { Geolocation } from '@capacitor/geolocation';
+import { Geolocation ,Geoposition } from '@awesome-cordova-plugins/geolocation/ngx';
 
 
 @Component({
@@ -16,26 +16,29 @@ export class HomePage implements OnInit {
   public previsualizacion: string;
   public archivos: any = [];
   public loading: boolean
-
-  address: string;
-  latitude: number;
-  longitude: number;
+  lat:number
+  lon:number
+  
   accuracy: number;
   constructor(
     private http: HttpClient,
     private sanitizer: DomSanitizer,
     public alertController: AlertController,
     private menu: MenuController,
-    private authService:AuthenticateService
-    
+    private authService:AuthenticateService,
+    public geolocation:Geolocation
     
 
     
   ) {}
  
-  
   ngOnInit() {
-    
+    this.geolocation.getCurrentPosition().then((geoposition: Geoposition)=>{
+      this.lat = geoposition.coords.latitude;
+      this.lon = geoposition.coords.longitude;
+
+      console.log(this.lat);
+    });
    }
  
 

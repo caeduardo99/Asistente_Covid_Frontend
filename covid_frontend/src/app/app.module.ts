@@ -10,7 +10,7 @@ import { AuthInterceptor } from './login/interceptors/logininterceptions';
 import { TokenInterceptor } from './login/interceptors/tokeninterceptions';
 import { CommonModule } from '@angular/common';
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
-
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -27,7 +27,7 @@ import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
     ],
   providers: 
   [
-    
+    Geolocation,
     AlertController, { provide: LOCALE_ID, useValue: "es" },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

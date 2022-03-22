@@ -11,7 +11,7 @@ import { AuthenticateService } from '../services/authenticate.service';
 import { Storage } from '@ionic/storage-angular';
 import { Usuario } from '../model/usuario';
 import { Router } from "@angular/router";
-import { Geolocation } from '@capacitor/geolocation';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
