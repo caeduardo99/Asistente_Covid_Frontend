@@ -19,7 +19,7 @@ import { Geolocation ,Geoposition } from '@awesome-cordova-plugins/geolocation/n
 })
 export class RegisterPage implements OnInit {
   registerForm: FormGroup;
-  usuario: Usuario;
+  private _usuario: Usuario;
   lat:number
   lon:number
   validation_messages = {
@@ -47,7 +47,7 @@ export class RegisterPage implements OnInit {
       { type: "required", message: " La cédula es requerida" }
     ],
     direccion: [
-      { type: "required", message: " La diracción es requerida" }
+      { type: "required", message: " La dirección es requerida" }
     ],
     telefono: [
       { type: "required", message: " El teléfono es requerida" }
@@ -69,10 +69,7 @@ export class RegisterPage implements OnInit {
     this.registerForm = this.formBuilder.group({
       cedula: new FormControl(
         "",
-        Validators.compose([Validators.required,Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(25),
-          Validators.pattern("[A-Za-zñÑáéíóúÁÉÍÓÚ ]+$")])
+        Validators.compose([Validators.required, Validators.minLength(10)])
       ),
       nombre: new FormControl(
         "",
@@ -115,7 +112,10 @@ export class RegisterPage implements OnInit {
         "",
         Validators.compose([Validators.required, Validators.minLength(10)])
       ),
-      
+      latitud: new FormControl(
+        
+     
+      ),
     });
   }
 
@@ -126,12 +126,23 @@ export class RegisterPage implements OnInit {
 
 
   guardarDatos(){
-    this.authService.addPost(this.registerForm.value);
+    this._usuario = new Usuario();
+    this._usuario.cedula = this.registerForm.value.cedula
+    this._usuario.nombre = this.registerForm.value.nombre
+    this._usuario.apellido = this.registerForm.value.apellido
+    this._usuario.institucion = this.registerForm.value.institucion    
+    this._usuario.direccion = this.registerForm.value.direccion
+    this._usuario.telefono = this.registerForm.value.telefono
+    this._usuario.email = this.registerForm.value.email
+    this._usuario.password = this.registerForm.value.password
+    this._usuario.latitud=this.lat
+    this._usuario.longitud=this.lon
+    this.authService.addPost(this._usuario);
     
    
   }
 
-  ngOnInit() {
+  obtenerUbicacion(){
     this.geolocation.getCurrentPosition().then((geoposition: Geoposition)=>{
       this.lat = geoposition.coords.latitude;
       this.lon = geoposition.coords.longitude;
@@ -139,6 +150,11 @@ export class RegisterPage implements OnInit {
       console.log(this.lat);
       console.log(this.lon);
     });
+  }
+
+  ngOnInit() {
+    
+    
    }
 
 }

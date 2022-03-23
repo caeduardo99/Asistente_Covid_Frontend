@@ -8,6 +8,8 @@ export class Usuario{
     telefono: number
     email: string
     password: string
-    roles: string[] = [];
+    latitud: number
+    longitud: number
+  roles: string[] = [];
 
 }

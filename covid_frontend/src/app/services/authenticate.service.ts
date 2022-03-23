@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../model/Usuario';
-
+import { Geolocation ,Geoposition } from '@awesome-cordova-plugins/geolocation/ngx';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,14 +14,15 @@ export class AuthenticateService {
   url1 = 'https://ia-backend-covid.herokuapp.com/api/usuario';
   url2 = "https://ia-backend-covid.herokuapp.com/"
   private _token: string;
- 
+  lat:number
+  lon:number
 
-  
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,public geolocation:Geolocation) {
     
    }
    // Creación del Metodo para el Registro del Usuario
    addPost(data) {
+    
     return new Promise((resolve, reject) => {
       const httpHeaders= new HttpHeaders({
         "Content-Type": "application/json"})
@@ -32,7 +33,17 @@ export class AuthenticateService {
         });
     });
   }
+  obtenerUbicacion(){
 
+    this.geolocation.getCurrentPosition().then((geoposition: Geoposition)=>{
+      this.lat = geoposition.coords.latitude;
+      this.lon = geoposition.coords.longitude;
+     
+      console.log(geoposition.coords.latitude);
+      console.log(this.lon);
+    });
+  }
+  
   public get usuario(): Usuario {
     if (this._usuario != null) {
       return this._usuario;
@@ -77,11 +88,17 @@ export class AuthenticateService {
     this._usuario.institucion = payload.institucion;
     this._usuario.direccion = payload.direccion;
     this._usuario.telefono = payload.telefono;
+    this._usuario.latitud = payload.lat;
+    this._usuario.longitud = payload.lon;
+
+
     this._usuario.email = payload.email;
     this._usuario.password = payload.password;
    
     sessionStorage.setItem("usuario", JSON.stringify(this._usuario));
   }
+
+  
 
 
   public get token(): string {

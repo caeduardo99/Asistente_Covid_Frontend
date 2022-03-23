@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MenuController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
-import { Geolocation ,Geoposition } from '@awesome-cordova-plugins/geolocation/ngx';
+
 
 
 @Component({
@@ -18,6 +18,7 @@ export class HomePage implements OnInit {
   public loading: boolean
   lat:number
   lon:number
+  public latitud: any = [];
   
   accuracy: number;
   constructor(
@@ -26,19 +27,14 @@ export class HomePage implements OnInit {
     public alertController: AlertController,
     private menu: MenuController,
     private authService:AuthenticateService,
-    public geolocation:Geolocation
+   
     
 
     
   ) {}
  
   ngOnInit() {
-    this.geolocation.getCurrentPosition().then((geoposition: Geoposition)=>{
-      this.lat = geoposition.coords.latitude;
-      this.lon = geoposition.coords.longitude;
-
-      console.log(this.lat);
-    });
+    
    }
  
 
@@ -75,9 +71,6 @@ export class HomePage implements OnInit {
       }
     });
 
-    
-    
-
     subirArchivo(): any {
       try {
         this.loading = true;
@@ -90,7 +83,7 @@ export class HomePage implements OnInit {
           .subscribe(res => {
             this.loading = false;
             console.log('Respuesta del servidor', res);
-  
+            
           }, () => {
             this.loading = false;
             alert('Error');
