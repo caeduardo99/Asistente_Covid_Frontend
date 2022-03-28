@@ -1,0 +1,27 @@
+ion-content{
+    --ion-background-color:#262d31 !important;
+}
+ion-header{
+    position:absolute;
+}
+ion-toolbar{
+    --ion-background-color:transparent;
+    --opacity:0;
+}
+
+.botones_logins{
+    margin-top: 25px;
+    text-align: center;
+     
+}
+.loginbtn{
+    --background: #ff0051;
+     color: #262d31;
+}
+.registrarsebtn{
+    --background: #ff0051;
+     
+}
+.title{
+    color:white;
+}

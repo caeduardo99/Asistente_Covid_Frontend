@@ -11,6 +11,7 @@ import { TokenInterceptor } from './login/interceptors/tokeninterceptions';
 import { CommonModule } from '@angular/common';
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -28,11 +29,11 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
   providers: 
   [
     Geolocation,
-    AlertController, { provide: LOCALE_ID, useValue: "es" },
+    AlertController,StatusBar, { provide: LOCALE_ID, useValue: "es" },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }
-  ],
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy, },
+      ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

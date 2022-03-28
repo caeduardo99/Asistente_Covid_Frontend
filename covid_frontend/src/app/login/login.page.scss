@@ -38,10 +38,21 @@ ion-card-content{
     
 }
 
+#logo{
+
+    text-align:center;
+    height: 150px;
+}
+#Mensaje{
+    color: white;
+    display:block;
+    text-align:center;
+}
+
 
 @media screen and (max-width:550px){
     #loginform{
-        margin-top: 50%;
+        margin-top: 20%;
         position: relative;
     
     } 
