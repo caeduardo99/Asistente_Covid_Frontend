@@ -1,27 +1,103 @@
-ion-content{
-    --ion-background-color:#262d31 !important;
-}
-ion-header{
-    position:absolute;
-}
-ion-toolbar{
-    --ion-background-color:transparent;
-    --opacity:0;
-}
+ ion-content{
+     --ion-background-color:#FF0051!important;
 
-.botones_logins{
-    margin-top: 25px;
-    text-align: center;
+     #header{
+       height: 50%;
+       background:  #262d31;
+       display: flex;  
+       flex-direction: column;
+       color: #ffffff;    
+       border-radius: 0px 0px 20px 20px;  
+       
+       ion-icon{
+           width: 150px;
+       }
+
+       #logo{
+           width: 100px;
+           height: 100px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           border-radius: 20px;
+           align-self: center;
+           margin-top: 40%;
+          
+       }    
+         #title{
+            text-align: center;
+           // font-weight: bold;
+            margin: 0;
+            font-size: 20px;
+            letter-spacing: 1px;
+            margin-top: px;
+            color: #fff;;
+            
+        }
+
+     }
+     ion-card{
+         box-shadow: none;
+         position: absolute;
+         background-color: #ffffff;
+         top: 37%;
+         left: 5%;
+         right: 5%;
+         border-radius: 20px;
+
+
+         ion-card-title{
+            font-weight: bold;
+            font-size: 19px;
+            text-align: center;
+            margin-bottom: 45px;
+           
+         }
+         ion-button{
+            height: 40px;
+            box-shadow: none;
+            text-transform: initial;
+            font-size: 16px;
+            letter-spacing: 0;
+            font-weight: 400;
+         }
+     }
+
      
-}
-.loginbtn{
-    --background: #ff0051;
-     color: #262d31;
-}
-.registrarsebtn{
-    --background: #ff0051;
+    
+
+
+ }
+// ion-header{
+//     position: absolute;
+// }
+// ion-toolbar{
+//     --ion-background-color:transparent;
+//     --opacity:0;
+// }
+// ion-card{
+//     --ion-background-color:transparent;
+//     box-shadow: none !important;
+// }
+// ion-card-title{
+
+//     text-align: center;
+//     margin-top: 150
+// px;
+//     font-size: 20px;
+//     color: white; 
+// }
+// .botones_logins{
+//     margin-top: 25px;
+//     text-align: center;
      
-}
-.title{
-    color:white;
-}
+// }
+// .loginbtn{
+//     --background: #ff0051;
+//      color: white;
+// }
+// .registrarsebtn{
+//     color: white;
+//     --border-color:#ff0051;
+   
+// }
