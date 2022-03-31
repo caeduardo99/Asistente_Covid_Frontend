@@ -9,7 +9,7 @@ import { Geolocation ,Geoposition } from '@awesome-cordova-plugins/geolocation/n
 
 export class AuthenticateService {
   
-  // Definicion de variables para consumo de apis
+  // Definición de variables para consumo de apis
   private _usuario: Usuario;
   url1 = 'https://ia-backend-covid.herokuapp.com/api/usuario';
   url2 = "https://ia-backend-covid.herokuapp.com/"
@@ -33,17 +33,10 @@ export class AuthenticateService {
         });
     });
   }
-  obtenerUbicacion(){
 
-    this.geolocation.getCurrentPosition().then((geoposition: Geoposition)=>{
-      this.lat = geoposition.coords.latitude;
-      this.lon = geoposition.coords.longitude;
-     
-      console.log(geoposition.coords.latitude);
-      console.log(this.lon);
-    });
-  }
-  
+
+ 
+
   public get usuario(): Usuario {
     if (this._usuario != null) {
       return this._usuario;
@@ -57,6 +50,9 @@ export class AuthenticateService {
     return new Usuario();
   }
 
+
+  
+  // Creacion metodo para el logeo del usuario
   getPosts(usuario: Usuario) {
     const urlEndpoint =  this.url2 + "oauth/token";
     
@@ -76,7 +72,7 @@ export class AuthenticateService {
       headers: httpHeaders,
     });
   }
-
+ 
  guardarUsuario(accessToken: string): void {
     let payload = this.obtenerDatosToken(accessToken);
     console.log(payload);
@@ -90,8 +86,6 @@ export class AuthenticateService {
     this._usuario.telefono = payload.telefono;
     this._usuario.latitud = payload.lat;
     this._usuario.longitud = payload.lon;
-
-
     this._usuario.email = payload.email;
     this._usuario.password = payload.password;
    

@@ -7,11 +7,21 @@ ion-card {
     --background : white;
    
 }
- ion-button{
-     --background: #ff0051;
-     display:block;
-     padding: 500;
-}
+//  ion-button{
+//      --background: #ff0051;
+//      display:block;
+//      padding: 500;
+// }
+
+ion-button{
+    --background: #ff0051;
+    height: 40px;
+    box-shadow: none;
+    text-transform: initial;
+    font-size: 16px;
+    letter-spacing: 0;
+    font-weight: 400;
+ }
 ion-footer{
     background : #262d31;
 }
@@ -48,11 +58,16 @@ ion-card-content{
     display:block;
     text-align:center;
 }
-
+#header{
+ //   --background : #262d31;
+   --color: #ff0051;
+   --border-color:#ff0051;
+   --border-style:#ff0051;
+}
 
 @media screen and (max-width:550px){
     #loginform{
-        margin-top: 20%;
+        margin-top: 40%;
         position: relative;
     
     } 

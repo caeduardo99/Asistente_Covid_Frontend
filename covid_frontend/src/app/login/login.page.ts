@@ -128,4 +128,7 @@ export class LoginPage implements OnInit {
     gotoRegister() {
       this.navCtrl.navigateForward("/register");     
     }
+    goToLogin(){
+      this.router.navigate(['/inicio'], { skipLocationChange: true });
+    }
 }

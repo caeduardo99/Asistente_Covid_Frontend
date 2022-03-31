@@ -1,5 +1,4 @@
 <ion-content>
-
 <div id="header">
 
 <div id="logo">
@@ -11,8 +10,11 @@
   <ion-card-content>
     <ion-card-title >Bienvenido a CovidDetect</ion-card-title>
     
-    <ion-button expand="block">Iniciar Sesión</ion-button>
-    <ion-button expand="block" fill="outline">Registrarse</ion-button>
+    <ion-button (click)="goToLogin()" expand="block">Iniciar sesión
+      
+    </ion-button>
+    
+    <ion-button (click)="gotoRegister()" expand="block" fill="outline">Registrate</ion-button>
   </ion-card-content>
 </ion-card>
 

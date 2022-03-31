@@ -1,24 +1,29 @@
+<ion-header >
+  <ion-toolbar id="header">
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goToLogin()" defaultHref="back-login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
-  <ion-img src="assets\images\header.png"></ion-img>
-  <ion-img id="logo"src="assets\images\Medisana.png"></ion-img>
-
   <figure>
   </figure>
   <form [formGroup]="loginForm" (ngSubmit)="login($event)"> 
-    <ion-card-title id="Mensaje">Bienvenido</ion-card-title>
+   
     <ion-card id="loginform">
       <ion-card-header>
-        <ion-card-title>Inicio de Sesión</ion-card-title>
+        <ion-card-title>Iniciar sesión</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-      <ion-card>
-        <ion-item><ion-input  formControlName="email" placeholder="Email"></ion-input></ion-item>
+      <ion-card> 
+        <ion-item>
+          <ion-input  formControlName="email" placeholder="Email"></ion-input></ion-item>
       </ion-card>
       <ion-card>
         <ion-item><ion-input type="password" formControlName="password" placeholder="Password"></ion-input></ion-item>
       </ion-card>
-      <ion-button id="Continuar" shape="round" type= "submit" expand="block">Continuar</ion-button>
+      <ion-button id="Continuar" expand="block" type= "submit" >Continuar</ion-button>
       </ion-card-content>
       <div class="validation-error">
         <ng-container *ngFor="let validation of validationMessages.email">
@@ -40,7 +45,7 @@
   
 </ion-content>
 <ion-footer>
-  <ion-button (click)="gotoRegister()" shape="round" expand="block">Registrarse</ion-button>
+  <!-- <ion-button (click)="gotoRegister()" shape="round" expand="block">Registrarse</ion-button> -->
 </ion-footer>
 
 

@@ -67,6 +67,7 @@ export class RegisterPage implements OnInit {
     public geolocation:Geolocation
      ) {
     this.registerForm = this.formBuilder.group({
+      
       cedula: new FormControl(
         "",
         Validators.compose([Validators.required, Validators.minLength(10)])
@@ -100,9 +101,23 @@ export class RegisterPage implements OnInit {
           Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
         ]),
       ),
+      repeatemail: new FormControl(
+        "",
+        Validators.compose([
+          Validators.required,
+          Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
+        ]),
+      ),
       password: new FormControl(
         "",
         Validators.compose([Validators.required, Validators.minLength(5)])
+      ),
+      repeatepassword: new FormControl(
+        "",
+        Validators.compose([
+          Validators.required,
+          Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
+        ]),
       ),
       direccion: new FormControl(
         "",
@@ -121,7 +136,7 @@ export class RegisterPage implements OnInit {
 
  
   goToLogin(){
-    this.router.navigate(['/login'], { skipLocationChange: true });
+    this.router.navigate(['/inicio'], { skipLocationChange: true });
   }
 
 
@@ -153,8 +168,14 @@ export class RegisterPage implements OnInit {
   }
 
   ngOnInit() {
-    
-    
+    this.geolocation.getCurrentPosition().then((geoposition: Geoposition)=>{
+      this.lat = geoposition.coords.latitude;
+      this.lon = geoposition.coords.longitude;
+
+      console.log(this.lat);
+      console.log(this.lon);
+    });
+   
    }
 
 }
