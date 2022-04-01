@@ -18,12 +18,12 @@
       <ion-card-content>
       <ion-card> 
         <ion-item>
-          <ion-input  formControlName="email" placeholder="Email"></ion-input></ion-item>
+          <ion-input formControlName="email" placeholder="Email"></ion-input></ion-item>
       </ion-card>
       <ion-card>
         <ion-item><ion-input type="password" formControlName="password" placeholder="Password"></ion-input></ion-item>
       </ion-card>
-      <ion-button id="Continuar" expand="block" type= "submit" >Continuar</ion-button>
+      <ion-button id="Continuar" (click)="presentLoading()" expand="block" type= "submit" >Continuar</ion-button>
       </ion-card-content>
       <div class="validation-error">
         <ng-container *ngFor="let validation of validationMessages.email">
@@ -45,7 +45,6 @@
   
 </ion-content>
 <ion-footer>
-  <!-- <ion-button (click)="gotoRegister()" shape="round" expand="block">Registrarse</ion-button> -->
 </ion-footer>
 
 
