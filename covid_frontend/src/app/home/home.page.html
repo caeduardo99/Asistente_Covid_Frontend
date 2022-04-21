@@ -17,12 +17,20 @@
         <ion-card-content>
             Deteccion de COVID 19 mediante Inteligencia Artificial tomando los valores de la radiografia y mostrando el diagnostico.
             <div class="container">
-                <!-- <img [src]="imgURL"  /> -->
+              
             </div>
         </ion-card-content>
         <input  type="file" (change)="capturarFile($event)">
         <div>
             <img class="radiografia" height="300" width="300" [src]="previsualizacion" alt="">
+            <!-- <img  [src]="converted_image" alt="Select Image"/> -->
+            <!-- <img
+            [src]="DomSanitizer.bypassSecurityTrustUrl()"
+            *ngIf="extraerBase64"
+            alt="Ionic File"
+            width="300"
+          /> -->
+
             <ion-button (click)="subirArchivo()" >Upload</ion-button>
         </div>
         <ion-item>
@@ -37,3 +45,9 @@
     
   
 </ion-content>
+
+
+
+
+
+

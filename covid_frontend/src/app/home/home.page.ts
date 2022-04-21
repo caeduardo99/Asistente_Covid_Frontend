@@ -14,20 +14,21 @@ import { AuthenticateService } from '../services/authenticate.service';
 })
 export class HomePage implements OnInit {
   public previsualizacion: string;
+  public image: string;
   public archivos: any = [];
   public loading: boolean
   lat:number
   lon:number
   public latitud: any = [];
-  
+  private attributes: string[];
   accuracy: number;
   constructor(
-    private http: HttpClient,
-    private sanitizer: DomSanitizer,
-    public alertController: AlertController,
-    private menu: MenuController,
-    private authService:AuthenticateService,
-   
+  private http: HttpClient,
+  public DomSanitizer: DomSanitizer,
+  private alertController: AlertController,
+  private menu: MenuController,
+  private authService:AuthenticateService,
+  
     
 
     
@@ -46,14 +47,15 @@ export class HomePage implements OnInit {
       console.log(imagen);
     });
     this.archivos.push(archivoCapturado);
-    // console.log(event.target.files);
+   
   }
 
   extraerBase64 = async ($event: any) =>
     new Promise((resolve, reject) => {
       try {
         const unsafeImg = window.URL.createObjectURL($event);
-        const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+        const image = this.DomSanitizer.bypassSecurityTrustUrl(unsafeImg);
+        
         const reader = new FileReader();
         reader.readAsDataURL($event);
         reader.onload = () => {
@@ -70,29 +72,32 @@ export class HomePage implements OnInit {
         return null;
       }
     });
-
+       // el archivo capturado lo convertimos en binario para ser enviado al backEnd
     subirArchivo(): any {
       try {
         this.loading = true;
         const formularioDeDatos = new FormData();
         this.archivos.forEach(archivo => {
-          formularioDeDatos.append('archivo', archivo)
+        formularioDeDatos.append('archivo', archivo)
         })
         
-        this.authService.post("https://ia-backend-covid.herokuapp.com/api/upload", formularioDeDatos)
+        this.authService.post("http://172.16.71.49:8080/api/upload", formularioDeDatos)
           .subscribe(res => {
             this.loading = false;
-            console.log('Respuesta del servidor', res);
-            
-          }, () => {
+            console.log('Respuesta del servidor', res);}, () => 
+          {
             this.loading = false;
             alert('Error');
           })
-      } catch (e) {
+      } 
+      catch (e) {
         this.loading = false;
         console.log('ERROR', e);
   
       }
     }
+    
+    
+  
 
 }

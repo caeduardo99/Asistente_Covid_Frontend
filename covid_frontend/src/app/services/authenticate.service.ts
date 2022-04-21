@@ -20,6 +20,7 @@ export class AuthenticateService {
   constructor(public http: HttpClient,public geolocation:Geolocation) {
     
    }
+
    // Creación del Metodo para el Registro del Usuario
    addPost(data) {
     
@@ -52,7 +53,7 @@ export class AuthenticateService {
 
 
   
-  // Creacion metodo para el logeo del usuario
+  // Creacion metodo para el logeo del usuario con las credenciales del backend
   getPosts(usuario: Usuario) {
     const urlEndpoint =  this.url2 + "oauth/token";
     
@@ -73,7 +74,9 @@ export class AuthenticateService {
     });
   }
  
- guardarUsuario(accessToken: string): void {
+
+  // creacion metodo guardar usuario
+  guardarUsuario(accessToken: string): void {
     let payload = this.obtenerDatosToken(accessToken);
     console.log(payload);
     this._usuario = new Usuario();
@@ -126,6 +129,7 @@ export class AuthenticateService {
     return false;
   }
 
+
   logout(): void {
     this._token = null;
     this._usuario = null;
@@ -141,8 +145,12 @@ export class AuthenticateService {
     return false;
   }
 
+
+  //Metodo post imagen
   public post(url:string, body){
     return this.http.post(url,body); // POST  
   }
+
+ 
 
 }

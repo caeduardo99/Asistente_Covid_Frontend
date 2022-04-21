@@ -89,7 +89,7 @@ export class LoginPage implements OnInit {
         this.authService.guardarUsuario(response.access_token);
         this.authService.guardarToken(response.access_token);
         let usuario = this.authService.usuario;
-   
+        this.loginForm.reset()
         this.router.navigate(["menu/home"]);
 
         this.alertController.create({
