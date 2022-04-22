@@ -93,7 +93,7 @@ export class LoginPage implements OnInit {
         this.router.navigate(["menu/home"]);
 
         this.alertController.create({
-          message: 'Inicio de Sesión Exitoso',
+          message: 'Inicio de sesión exitoso',
           buttons: ['OK']
         }).then(res => {
     
