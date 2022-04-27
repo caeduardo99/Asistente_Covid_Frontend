@@ -16,7 +16,7 @@ const validUser = {
 }
 
 describe('inicio' ,() => {
-  it('succesful login', () =>{
+  it('succesful resgister', () =>{
     cy.visit('/')  //Visita la pagina principal
     cy.get('.button-outline').click() // Clickea en el boton registro
     cy.get(':nth-child(1) > .item-interactive').type(validUser.cedula) // valida la cedula

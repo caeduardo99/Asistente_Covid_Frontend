@@ -19,6 +19,6 @@ describe('inicio' ,() => {
     cy.get('ion-content.md > ion-card.md > ion-card-header.ion-inherit-color > .ion-inherit-color').should('include.text', 'Asistente de detección de COVID')
    cy.contains('Elegir archivo').click()
 
-   cy.get('#selecionar > input').should('have.text', 'Elegir archivo')
+    cy.get('#selecionar > input').should('have.text', 'Elegir archivo')
   })  
 })

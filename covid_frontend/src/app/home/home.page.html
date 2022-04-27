@@ -26,6 +26,9 @@
         
         <div>
             <img class="radiografia" height="300" width="300" [src]="previsualizacion" alt="">
+            <img class="radiografia" height="300" width="300" [src]="previsualizacion2" alt="">
+           
+           
             <!-- <img  [src]="converted_image" alt="Select Image"/> -->
             <!-- <img
             [src]="DomSanitizer.bypassSecurityTrustUrl()"
@@ -34,7 +37,7 @@
             width="300"
           /> -->
 
-            <ion-button (click)="subirArchivo()" >Upload</ion-button>
+            <ion-button (click)=" subirArchivo()" >Upload</ion-button>
         </div>
         <ion-item>
           <ion-range min="20" max="80" step="2">
@@ -48,9 +51,6 @@
     
   
 </ion-content>
-
-
-
 
 
 

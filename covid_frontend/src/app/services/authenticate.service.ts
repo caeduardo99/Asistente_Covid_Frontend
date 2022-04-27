@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../model/Usuario';
 import { Geolocation ,Geoposition } from '@awesome-cordova-plugins/geolocation/ngx';
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +14,7 @@ export class AuthenticateService {
   private _usuario: Usuario;
   url1 = 'https://ia-backend-covid.herokuapp.com/api/usuario';
   url2 = "https://ia-backend-covid.herokuapp.com/"
+  
   private _token: string;
   lat:number
   lon:number
@@ -148,9 +150,26 @@ export class AuthenticateService {
 
   //Metodo post imagen
   public post(url:string, body){
+    
     return this.http.post(url,body); // POST  
   }
 
- 
+
+
+  obtenerPrediction(url:string, body) {
+    let json = JSON.stringify(body);
+    let params = json;
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: this.token,
+    });
+    return this.http
+      .post(url ,  body)
+      .pipe(
+        map((data) => {
+          return data;
+        })
+      );
+  }
 
 }
