@@ -5,10 +5,10 @@ import { AppComponent } from './app.component';
 import { LoginGuard } from './guards/login.guard';
 
 // const routes: Routes = [
- 
+
 //   {
 //     path: '',
-    
+
 //     redirectTo: '/',
 //     pathMatch: 'full'
 //   },
@@ -17,7 +17,7 @@ import { LoginGuard } from './guards/login.guard';
 //     path: 'login',
 //     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
 //   },
-  
+
 //   {
 //     path: 'register',
 //     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
@@ -25,9 +25,9 @@ import { LoginGuard } from './guards/login.guard';
 //   {
 //     path: 'menu',
 //     loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule),
-   
+
 //   }
-  
+
 // ];
 
 // @NgModule({
@@ -37,42 +37,54 @@ import { LoginGuard } from './guards/login.guard';
 // })
 const routes: Routes = [
   {
-    path:'',
+    path: '',
     component: LoginPage,
     children: [
       {
-        path: '', 
+        path: '',
         redirectTo: '/login',
         pathMatch: 'full',
       },
-      
-    ]},
-    {
-      path: 'menu',
-      loadChildren: () => import('../app/menu/menu.module').then(m => m.MenuPageModule)
-    },
-    {
-      path: 'register',
-          loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-     },
-     {
-      path: 'login',
-           loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-     },
+    ],
+  },
+  {
+    path: 'menu',
+    loadChildren: () =>
+      import('../app/menu/menu.module').then((m) => m.MenuPageModule),
+  },
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('./register/register.module').then((m) => m.RegisterPageModule),
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginPageModule),
+  },
   {
     path: 'animated-splash',
-    loadChildren: () => import('./animated-splash/animated-splash.module').then( m => m.AnimatedSplashPageModule)
+    loadChildren: () =>
+      import('./animated-splash/animated-splash.module').then(
+        (m) => m.AnimatedSplashPageModule
+      ),
   },
   {
     path: 'inicio',
-    loadChildren: () => import('./inicio/inicio.module').then( m => m.InicioPageModule)
+    loadChildren: () =>
+      import('./inicio/inicio.module').then((m) => m.InicioPageModule),
   },
-     
-                    
-  ];
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./home/home.module').then((m) => m.HomePageModule),
+  },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{preloadingStrategy: PreloadAllModules})],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
