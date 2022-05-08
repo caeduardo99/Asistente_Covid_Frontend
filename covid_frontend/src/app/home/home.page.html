@@ -1,4 +1,66 @@
-<ion-header>
+<ion-header class="ion-no-border">
+    <ion-toolbar color="primary" no-border>
+        <ion-buttons slot="start">
+            <ion-button>
+                <ion-icon name="menu"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div class="banner">
+        <img src="../../assets/banner2.svg" />
+        <div class="caption ion-padding">
+            Asistente de <br> COVID 19
+        </div>
+    </div>
+    <div class="input">
+        <div class="seleccion">
+            <input type="file" (change)="capturarFile($event)">
+        </div>
+    </div>
+
+    <div class="event-slider">
+        <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }" class="default-left-padding">
+            <ion-slide>
+                <ion-col class="ion-text-left">
+                    <ion-card>
+                        <ion-card-header class="ion-no-padding">
+                            <img [src]="previsualizacion" alt="">
+                        </ion-card-header>
+                        <ion-card-content>
+                            <h2 class="eventname">Radiografia de torax</h2>
+                            <div class="additional-info">
+                                <ion-button>Upload</ion-button>
+                            </div>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-col>
+            </ion-slide>
+
+            <ion-slide>
+                <ion-col class="ion-text-left">
+                    <ion-card>
+                        <ion-card-header class="ion-no-padding">
+                            <img [src]="previsualizacion" alt="">
+                        </ion-card-header>
+
+                        <ion-card-content>
+
+                            <h2 class="eventname">Resultado</h2>
+                            <p class="location">
+                                <ion-icon name="pulse-outline"></ion-icon> Si tiene o no tiene covid</p>
+
+
+                        </ion-card-content>
+                    </ion-card>
+                </ion-col>
+            </ion-slide>
+        </ion-slides>
+    </div>
+</ion-content>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button ></ion-menu-button>
@@ -7,7 +69,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
+
     <ion-card>
 
         <img src="assets\images\home_img.webp">
@@ -17,25 +79,18 @@
         <ion-card-content>
             Deteccion de COVID 19 mediante Inteligencia Artificial tomando los valores de la radiografia y mostrando el diagnostico.
             <div class="container">
-              
+
             </div>
         </ion-card-content>
-       
+
           <input  type="file" (change)="capturarFile($event)">
-        
-        
+
+
         <div>
             <img class="radiografia" height="300" width="300" [src]="previsualizacion" alt="">
             <img class="radiografia" height="300" width="300" [src]="previsualizacion2" alt="">
-           
-           
-            <!-- <img  [src]="converted_image" alt="Select Image"/> -->
-            <!-- <img
-            [src]="DomSanitizer.bypassSecurityTrustUrl()"
-            *ngIf="extraerBase64"
-            alt="Ionic File"
-            width="300"
-          /> -->
+
+
 
             <ion-button (click)=" subirArchivo()" >Upload</ion-button>
         </div>
@@ -44,13 +99,13 @@
             <ion-icon size="small" slot="start" name="heart-outline"></ion-icon>
             <ion-icon slot="end" name="thermometer-outline"></ion-icon>
           </ion-range>
-          
+
         </ion-item>
-   
+
     </ion-card>
-    
-  
+
+
 </ion-content>
 
 
-
+ -->

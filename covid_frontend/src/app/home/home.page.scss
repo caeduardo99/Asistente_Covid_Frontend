@@ -1,41 +1,75 @@
+ion-header {
+    position: absolute;
+    ion-toolbar {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+}
+
+.default-left-padding {
+    padding-left: 26px;
+}
+
+.default-top-padding {
+    padding-top: 26px !important;
+}
+
 ion-content {
-  --background : #262d31;
- 
-ion-card{
-  text-align: center;
-}
-ion-card-title{
-  font-size: X-large;
-}
-.radiografia{
-   margin:20px auto;
-		display:block;
-}
-
- }#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+    .banner {
+        position: relative;
+        img {
+            width: 100%;
+        }
+        .caption {
+            position: absolute;
+            width: 100%;
+            bottom: 55px;
+            font-size: 26px;
+            color: white;
+            padding-left: 26px;
+            padding-right: 26px;
+        }
+    }
+    .input {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 42px 26px 16px 26px;
+        .seleccion {
+            margin: 0;
+            font-size: 15px;
+            font-weight: bold;
+            color: #262d31;
+        }
+    }
+    .event-slider {
+        ion-slide {
+            width: 60%;
+            margin-right: 30px;
+            ion-col {
+                padding-left: 0;
+                ion-card {
+                    width: 100%;
+                    border-radius: 12px;
+                    box-shadow: 0px 4px 12px 2px rgba(0, 0, 0, 0.16);
+                    margin-left: 0;
+                    margin-top: 0;
+                    ion-card-header {
+                        img {
+                            width: 100%;
+                        }
+                    }
+                    ion-card-content {
+                        padding-top: 13px;
+                        .eventname {
+                            color: #262d31;
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
