@@ -14,7 +14,7 @@ export class AuthenticateService {
   private _usuario: Usuario;
   url1 = 'https://ia-backend-covid.herokuapp.com/api/usuario';
   url2 = "https://ia-backend-covid.herokuapp.com/"
-  
+  // url2 = "https://ia-backend-covid.herokuapp.com/"
   private _token: string;
   lat:number
   lon:number
@@ -161,7 +161,7 @@ export class AuthenticateService {
     let params = json;
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: this.token,
+      // Authorization: this.token,
     });
     return this.http
       .post(url ,  body)

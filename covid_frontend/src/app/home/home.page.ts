@@ -74,7 +74,7 @@ export class HomePage implements OnInit {
 
       this.authService
         .obtenerPrediction(
-          'http://172.16.110.134:8080/api/upload',
+          'http://172.16.67.47:8080/api/upload',
           formularioDeDatos
         )
         .subscribe(
@@ -101,22 +101,22 @@ export class HomePage implements OnInit {
     }
   }
 
-  loadImages = () => {
-    try {
-      const formData = new FormData();
-      this.archivos.forEach((archivo) => {
-        formData.append('archivo', archivo);
-      });
-      this.loading = true;
-      this.authService
-        .post('http://172.16.71.49:8080/api/upload', formData)
-        .subscribe((res) => {
-          console.log('Respuesta del servidor', res);
-          this.loading = false;
-          console.log('Carga exitosa');
-        });
-    } catch (e) {
-      console.log('ERROR', e);
-    }
-  };
+  // loadImages = () => {
+  //   try {
+  //     const formData = new FormData();
+  //     this.archivos.forEach((archivo) => {
+  //       formData.append('archivo', archivo);
+  //     });
+  //     this.loading = true;
+  //     this.authService
+  //       .post('http://172.16.71.49:8080/api/upload', formData)
+  //       .subscribe((res) => {
+  //         console.log('Respuesta del servidor', res);
+  //         this.loading = false;
+  //         console.log('Carga exitosa');
+  //       });
+  //   } catch (e) {
+  //     console.log('ERROR', e);
+  //   }
+  // };
 }
