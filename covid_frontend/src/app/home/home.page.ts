@@ -73,26 +73,23 @@ export class HomePage implements OnInit {
       });
 
       this.authService
-        .obtenerPrediction(
-          'http://172.16.67.47:8080/api/upload',
+        .post(
+          'https://ia-backend-covid.herokuapp.com/api/upload',
           formularioDeDatos
         )
         .subscribe(
           (response) => {
-            // this.loading = false;
-            //var respuesta= JSON.parse(response.toString())
-            //console.log('Respuesta del servidor',response["prediccion"]);
+            
             this.previsualizacion2 = null;
             this.previsualizacion2 = response['prediccion'];
-            console.log(this.previsualizacion2);
+         //   console.log(this.previsualizacion2);
             this.previsualizacion2 =
               'data:image/jpeg;base64,' + this.previsualizacion2;
-
+             
             // this.previsualizacion2=response+"";
             // console.log(this.previsualizacion2);
           },
           () => {
-            // this.loading = false;
             alert('Error');
           }
         );

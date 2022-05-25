@@ -63,19 +63,19 @@
 
     <div class="grid__item grid__item--bg theme-2">
 		<div class="grid__item-img" data-displacement="../../assets/images/8.jpg" data-intensity="-0.65" data-speedIn="1.2" data-speedOut="1.2">
-			<img src="../../assets/images/Img21.jpg" alt="Image"/>
-			<img src="../../assets/images/Img22.jpg" alt="Image"/>
-            <button class="previous control">antes</button>
-            <button class="next control">despues</button>
+			<img [src]="previsualizacion" alt="" alt="Image"/>
+			<img [src]="previsualizacion2" alt="Image"/>
+          
 		</div>
-		<div class="grid__item-content">
+		<!-- <div class="grid__item-content">
 			<span class="grid__item-meta">California</span>
 			<h2 class="grid__item-title">Jumping Around</h2>
 			<h3 class="grid__item-subtitle">
+                
 				<span>California's last empty jump spots</span>
 				<a class="grid__item-link" href="#">Discover more</a>
 			</h3>
-		</div>
+		</div> -->
 
 	</div>
 
@@ -85,13 +85,6 @@
 <script src="js/TweenMax.min.js"></script>
 <script src="js/hover-effect.umd.js"></script>
 <script>
-//     var myAnimation = new hoverEffect({
-// parent: document.querySelector('.grid__item'),
-// intensity: 0.3,
-// image1: '../../assets/images/home_img.webp',
-// image2: '../../assets/images/home_img.webp',
-// displacementImage: '../../assets/images/home_img.webp'
-// });
 imagesLoaded( document.querySelectorAll('img'), () => {
 				document.body.classList.remove('loading');
 			});
