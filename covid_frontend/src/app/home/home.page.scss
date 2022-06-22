@@ -17,9 +17,6 @@ ion-header {
 ion-content {
     .banner {
         position: relative;
-        img {
-            width: 100%;
-        }
         .caption {
             position: absolute;
             width: 100%;
@@ -57,12 +54,8 @@ ion-content {
                     ion-card-header {
                         img {
                             width: 100%;
-						
                         }
                     }
-					ion-card-header:hover{
-						background-color: url("../../assets/images/Img22.jpg");
-					}
                     ion-card-content {
                         padding-top: 13px;
                         .eventname {
@@ -76,87 +69,9 @@ ion-content {
             }
         }
     }
-    .grid__item-img {
-        display: block;
-        height: 100%;
-        width: 100%;
+    .swiper-slide {
+        img {
+            width: 100%;
+        }
     }
-    
-    .grid__item-img canvas {
-        height: 100%;
-    }
-    
-    .grid__item-img img {
-        height: 100%;
-        display: block;
-    }
-    
-    .grid__item-img img:nth-child(2) {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-    
-    .grid__item:hover .grid__item-img img:nth-child(2) {
-        opacity: 1;
-    }
-    
-    .js .grid__item-img img {
-        display: none;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-.grid__item {
-	position: relative;
-	display: flex;
-	align-items: stretch;
-	width: 100vw;
-}
-
-.grid__item--bg {
-	background-color: var(--item-bg);
-	height: 100vw;
-}
-
-.grid__item-content {
-	width: 100%;
-	padding: 8vw;
-	display: flex;
-	flex-direction: column;
-	overflow: hidden;
-	pointer-events: none;
-	background: var(--item-bg);
-}
-
-
-
-.grid__item-img {
-	display: block;
-	height: 100%;
-	width: 100%;
-}
-
-
-
-
-
-
-
-
-
-
-
-
 }

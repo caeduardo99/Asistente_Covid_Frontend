@@ -1,73 +1,41 @@
- ion-content{
-     --ion-background-color:#FF0051!important;
-
-     #header{
-       height: 50%;
-       background:  #262d31;
-       display: flex;  
-       flex-direction: column;
-       color: #ffffff;    
-       border-radius: 0px 0px 20px 0px;  
-       
-       ion-icon{
-           width: 150px;
-       }
-
-       #logo{
-           width: 100px;
-           height: 100px;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           border-radius: 20px;
-           align-self: center;
-           margin-top: 40%;
-          
-       }    
-         #title{
-            text-align: center;
-           // font-weight: bold;
-            margin: 0;
-            font-size: 20px;
-            letter-spacing: 1px;
-            margin-top: px;
-            color: #fff;;
-            
+ion-content {
+    --ion-background-color: #ff0051 !important;
+    #header {
+        height: 50%;
+        background: #262d31;
+        display: flex;
+        flex-direction: column;
+        color: #ffffff;
+        border-radius: 0px 0px 20px 20px;
+        ion-icon {
+            width: 150px;
         }
-
-     }
-     ion-card{
-         box-shadow: none;
-         position: absolute;
-         background-color: #ffffff;
-         top: 37%;
-         left: 5%;
-         right: 5%;
-         border-radius: 20px;
-
-
-         ion-card-title{
+    }
+    ion-card {
+        box-shadow: none;
+        position: absolute;
+        background-color: #ffffff;
+        top: 37%;
+        left: 10%;
+        right: 10%;
+        border-radius: 20px;
+        ion-card-title {
             font-weight: bold;
             font-size: 19px;
             text-align: center;
             margin-bottom: 45px;
-           
-         }
-         ion-button{
+        }
+        ion-button {
             height: 40px;
             box-shadow: none;
             text-transform: initial;
             font-size: 16px;
             letter-spacing: 0;
             font-weight: 400;
-         }
-     }
+        }
+    }
+}
 
-     
-    
-
-
- }
 // ion-header{
 //     position: absolute;
 // }
@@ -80,17 +48,15 @@
 //     box-shadow: none !important;
 // }
 // ion-card-title{
-
 //     text-align: center;
 //     margin-top: 150
 // px;
 //     font-size: 20px;
-//     color: white; 
+//     color: white;
 // }
 // .botones_logins{
 //     margin-top: 25px;
 //     text-align: center;
-     
 // }
 // .loginbtn{
 //     --background: #ff0051;
@@ -99,5 +65,4 @@
 // .registrarsebtn{
 //     color: white;
 //     --border-color:#ff0051;
-   
 // }

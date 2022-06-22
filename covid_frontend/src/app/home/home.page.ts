@@ -1,16 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterContentChecked,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { AlertController, NavParams } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MenuController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
+import { SwiperComponent } from 'swiper/angular';
+import { ViewEncapsulation } from '@angular/core';
+import { SwiperOptions } from 'swiper';
+import SwiperCore, { Pagination, EffectCube } from 'swiper';
 
+SwiperCore.use([Pagination, EffectCube]);
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class HomePage implements OnInit {
+export class HomePage implements AfterContentChecked {
+  @ViewChild('swiper') swiper: SwiperComponent;
+  config: SwiperOptions = {
+    pagination: true,
+    slidesPerView: 'auto',
+    effect: 'cube',
+  };
+
   public previsualizacion: string;
   public previsualizacion2: string;
   public archivos: any = [];
@@ -28,6 +46,25 @@ export class HomePage implements OnInit {
     private authService: AuthenticateService
   ) {}
 
+  ngAfterContentChecked() {
+    if (this.swiper) {
+      this.swiper.updateSwiper({});
+    }
+  }
+  swiperSlideChanged(e) {
+    console.log('changed:', e);
+  }
+  touchAllowed = false;
+  next() {
+    this.swiper.swiperRef.slideNext(500);
+  }
+  prev() {
+    this.swiper.swiperRef.slidePrev(500);
+  }
+  toogleTouch() {
+    this.touchAllowed = !this.touchAllowed;
+    this.swiper.swiperRef.allowTouchMove = this.touchAllowed;
+  }
   ngOnInit() {}
   // Capturamos el evento de "subir la radografia". Al subir una foto, es decir, seleccionarla
   // desde nuestros archivos, se ejecutará esta función, que lo que hace es obtener el archivo
@@ -79,13 +116,12 @@ export class HomePage implements OnInit {
         )
         .subscribe(
           (response) => {
-            
             this.previsualizacion2 = null;
             this.previsualizacion2 = response['prediccion'];
-         //   console.log(this.previsualizacion2);
+            //   console.log(this.previsualizacion2);
             this.previsualizacion2 =
               'data:image/jpeg;base64,' + this.previsualizacion2;
-             
+
             // this.previsualizacion2=response+"";
             // console.log(this.previsualizacion2);
           },
@@ -97,23 +133,4 @@ export class HomePage implements OnInit {
       console.log('ERROR', e);
     }
   }
-
-  // loadImages = () => {
-  //   try {
-  //     const formData = new FormData();
-  //     this.archivos.forEach((archivo) => {
-  //       formData.append('archivo', archivo);
-  //     });
-  //     this.loading = true;
-  //     this.authService
-  //       .post('http://172.16.71.49:8080/api/upload', formData)
-  //       .subscribe((res) => {
-  //         console.log('Respuesta del servidor', res);
-  //         this.loading = false;
-  //         console.log('Carga exitosa');
-  //       });
-  //   } catch (e) {
-  //     console.log('ERROR', e);
-  //   }
-  // };
 }

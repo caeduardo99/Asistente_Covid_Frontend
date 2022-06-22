@@ -1,52 +1,52 @@
-<ion-header >
-  <ion-toolbar id="header">
-    <ion-buttons slot="start">
-      <ion-back-button (click)="goToLogin()" defaultHref="back-login"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+<ion-header>
+    <ion-toolbar id="header">
+        <ion-buttons slot="start">
+            <ion-back-button (click)="goToLogin()" defaultHref="back-login"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <figure>
-  </figure>
-  <form [formGroup]="loginForm" (ngSubmit)="login($event)"> 
-   
-    <ion-card id="loginform">
-      <ion-card-header>
-        <ion-card-title>Iniciar sesión</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-      <ion-card> 
-        <ion-item>
-          <ion-input formControlName="email" placeholder="Email"></ion-input></ion-item>
-      </ion-card>
-      <ion-card>
-        <ion-item><ion-input type="password" formControlName="password" placeholder="Password"></ion-input></ion-item>
-      </ion-card>
-      <ion-button id="Continuar"  expand="block" type= "submit" >Continuar</ion-button>
-      </ion-card-content>
-      <div class="validation-error">
-        <ng-container *ngFor="let validation of validationMessages.email">
-          <div *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
-            {{ validation.message }}
-          </div>
-        </ng-container>
-      </div>
-      <div class="validation-error">
-        <ng-container *ngFor="let validation of validationMessages.password">
-          <div *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
-            {{ validation.message }}
-          </div>
-        </ng-container>
-      </div>
-      {{errorMessage}}
-    </ion-card>
-  </form>
-  
+<ion-content class="ion-padding">
+    <figure>
+    </figure>
+    <form [formGroup]="loginForm" (ngSubmit)="login($event)">
+
+
+
+        <div class="logo">
+            <img src="../../assets/images/trans.png" alt="">
+        </div>
+
+        <ion-card>
+            <ion-item lines="none">
+                <ion-input formControlName="email" placeholder="Email"></ion-input>
+            </ion-item>
+        </ion-card>
+        <ion-card>
+            <ion-item lines="none">
+                <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+            </ion-item>
+        </ion-card>
+        <ion-button id="Continuar" expand="block" type="submit">Continuar</ion-button>
+
+        <div class="validation-error">
+            <ng-container *ngFor="let validation of validationMessages.email">
+                <div *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                    {{ validation.message }}
+                </div>
+            </ng-container>
+        </div>
+        <div class="validation-error">
+            <ng-container *ngFor="let validation of validationMessages.password">
+                <div *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                    {{ validation.message }}
+                </div>
+            </ng-container>
+        </div>
+        {{errorMessage}}
+
+    </form>
+
 </ion-content>
 <ion-footer>
 </ion-footer>
-
-
-
-

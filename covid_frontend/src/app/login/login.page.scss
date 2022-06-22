@@ -1,19 +1,15 @@
- ion-content {
-     --background : #262d31;
-    
+ion-content {
+    --background: #262d31;
+    .logo {
+        text-align: center;
     }
+}
 
 ion-card {
-    --background : white;
-   
+    --background: white;
 }
-//  ion-button{
-//      --background: #ff0051;
-//      display:block;
-//      padding: 500;
-// }
 
-ion-button{
+ion-button {
     --background: #ff0051;
     height: 40px;
     box-shadow: none;
@@ -21,54 +17,51 @@ ion-button{
     font-size: 16px;
     letter-spacing: 0;
     font-weight: 400;
- }
-ion-footer{
-    background : #262d31;
+}
+
+.loginform {}
+
+ion-footer {
+    background: #262d31;
 }
 
 .validation-error {
     color: #ff0051;
-}  
-input:hover{
-    transition: cubic-bezier(0.23, 1, 0.320, 1);
 }
 
+input:hover {
+    transition: cubic-bezier(0.23, 1, 0.32, 1);
+}
 
-.Registro{
+.Registro {
     --background: #ff0051;
 }
 
-.Continuar{
---background: #ff0051;
-}
-
-
-ion-card-content{
+.Continuar {
     --background: #ff0051;
-    
 }
 
-#logo{
-
-    text-align:center;
+#logo {
+    text-align: center;
     height: 150px;
 }
-#Mensaje{
+
+#Mensaje {
     color: white;
-    display:block;
-    text-align:center;
-}
-#header{
- //   --background : #262d31;
-   --color: #ff0051;
-   --border-color:#ff0051;
-   --border-style:#ff0051;
+    display: block;
+    text-align: center;
 }
 
-@media screen and (max-width:550px){
-    #loginform{
+#header {
+    //   --background : #262d31;
+    --color: #ff0051;
+    --border-color: #ff0051;
+    --border-style: #ff0051;
+}
+
+@media screen and (max-width: 550px) {
+    #loginform {
         margin-top: 40%;
         position: relative;
-    
-    } 
+    }
 }

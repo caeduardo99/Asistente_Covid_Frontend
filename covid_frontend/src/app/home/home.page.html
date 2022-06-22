@@ -59,103 +59,42 @@
             </ion-slide>
         </ion-slides>
     </div>
-   
-
-    <div class="grid__item grid__item--bg theme-2">
-		<div class="grid__item-img" data-displacement="../../assets/images/8.jpg" data-intensity="-0.65" data-speedIn="1.2" data-speedOut="1.2">
-			<img [src]="previsualizacion" alt="" alt="Image"/>
-			<img [src]="previsualizacion2" alt="Image"/>
-          
-		</div>
-		<!-- <div class="grid__item-content">
-			<span class="grid__item-meta">California</span>
-			<h2 class="grid__item-title">Jumping Around</h2>
-			<h3 class="grid__item-subtitle">
-                
-				<span>California's last empty jump spots</span>
-				<a class="grid__item-link" href="#">Discover more</a>
-			</h3>
-		</div> -->
-
-	</div>
 
 
-<script src="js/imagesloaded.pkgd.min.js"></script>
-<script src="js/three.min.js"></script>
-<script src="js/TweenMax.min.js"></script>
-<script src="js/hover-effect.umd.js"></script>
-<script>
-imagesLoaded( document.querySelectorAll('img'), () => {
-				document.body.classList.remove('loading');
-			});
-
-			Array.from(document.querySelectorAll('.grid__item-img')).forEach((el) => {
-				const imgs = Array.from(el.querySelectorAll('img'));
-                var button5 =	new hoverEffect({
-					parent: el,
-					intensity: el.dataset.intensity || undefined,
-					speedIn: el.dataset.speedin || undefined,
-					speedOut: el.dataset.speedout || undefined,
-					easing: el.dataset.easing || undefined,
-					hover: el.dataset.hover || undefined,
-					image1: imgs[0].getAttribute('src'),
-					image2: imgs[1].getAttribute('src'),
-					displacementImage: el.dataset.displacement,
-                    hover: false
-				}
-                )
-                document.querySelector('.next').addEventListener('click', button5.next);
-		        document.querySelector('.previous').addEventListener('click', button5.previous);
-			});
-</script>
-
-</ion-content>
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button ></ion-menu-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-
-    <ion-card>
-
-        <img src="assets\images\home_img.webp">
-        <ion-card-header>
-            <ion-card-title>Asistente de detección de COVID</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-            Deteccion de COVID 19 mediante Inteligencia Artificial tomando los valores de la radiografia y mostrando el diagnostico.
-            <div class="container">
-
-            </div>
-        </ion-card-content>
-
-          <input  type="file" (change)="capturarFile($event)">
+    <div class="nazi">
 
 
-        <div>
-            <img class="radiografia" height="300" width="300" [src]="previsualizacion" alt="">
-            <img class="radiografia" height="300" width="300" [src]="previsualizacion2" alt="">
+        <swiper #swiper [allowTouchMove]="false">
+            <ng-template swiperSlide><img src="../../assets/images/logo.png" /></ng-template>
+            <ng-template swiperSlide><img src="../../assets/images/normal.jpg" /></ng-template>
+            <ng-template swiperSlide><img src="../../assets/images/covid.jpg" /></ng-template>
+
+        </swiper>
+    </div>
+    <ion-footer>
+        <ion-row>
+            <ion-col size="4">
+                <ion-button expand="full" (click)="prev()">
+                    <ion-icon name="arrow-back-circle-outline"></ion-icon>
+                </ion-button>
+            </ion-col>
+            <ion-col size="4">
+                <ion-button expand="full" (click)="toogleTouch()">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                </ion-button>
+            </ion-col>
+
+            <ion-col size="4">
+                <ion-button expand="full" (click)="next()">
+                    <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+                </ion-button>
+            </ion-col>
+
+        </ion-row>
+    </ion-footer>
 
 
 
-            <ion-button (click)=" subirArchivo()" >Upload</ion-button>
-        </div>
-        <ion-item>
-          <ion-range min="20" max="80" step="2">
-            <ion-icon size="small" slot="start" name="heart-outline"></ion-icon>
-            <ion-icon slot="end" name="thermometer-outline"></ion-icon>
-          </ion-range>
-
-        </ion-item>
-
-    </ion-card>
 
 
 </ion-content>
-
-
- -->
