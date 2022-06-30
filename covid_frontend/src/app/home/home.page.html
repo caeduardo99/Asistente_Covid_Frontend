@@ -59,15 +59,13 @@
             </ion-slide>
         </ion-slides>
     </div>
-
-
     <div class="nazi">
 
 
         <swiper #swiper [allowTouchMove]="false">
             <ng-template swiperSlide><img src="../../assets/images/logo.png" /></ng-template>
-            <ng-template swiperSlide><img src="../../assets/images/normal.jpg" /></ng-template>
-            <ng-template swiperSlide><img src="../../assets/images/covid.jpg" /></ng-template>
+            <ng-template swiperSlide> <img [src]="previsualizacion" alt=""></ng-template>
+            <ng-template swiperSlide> <img [src]="previsualizacion2" alt=""></ng-template>
 
         </swiper>
     </div>
