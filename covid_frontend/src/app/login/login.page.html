@@ -16,18 +16,22 @@
         <div class="logo">
             <img src="../../assets/images/trans.png" alt="">
         </div>
+        <ion-card  class="ion-padding">
+            <ion-card>
+                <ion-item lines="none">
+                    <ion-input formControlName="email" placeholder="Email"></ion-input>
+                </ion-item>
+            </ion-card>
+    
+            <ion-card>
+                <ion-item lines="none">
+                    <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+                </ion-item>
+            </ion-card>
+            <ion-button id="Continuar" expand="block" type="submit">Continuar</ion-button>
+        </ion-card>
+        
 
-        <ion-card>
-            <ion-item lines="none">
-                <ion-input formControlName="email" placeholder="Email"></ion-input>
-            </ion-item>
-        </ion-card>
-        <ion-card>
-            <ion-item lines="none">
-                <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
-            </ion-item>
-        </ion-card>
-        <ion-button id="Continuar" expand="block" type="submit">Continuar</ion-button>
 
         <div class="validation-error">
             <ng-container *ngFor="let validation of validationMessages.email">
