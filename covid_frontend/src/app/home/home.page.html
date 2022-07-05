@@ -1,3 +1,4 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <ion-header class="ion-no-border">
     <ion-toolbar color="primary" no-border>
         <ion-buttons slot="start">
@@ -17,16 +18,18 @@
     </div>
     <div class="input">
         <div class="seleccion">
-            <input type="file" (change)="capturarFile($event)">
+            <!-- <input type="file" (change)="capturarFile($event)"> -->
+            
+            <input class="form-control" type="file" id="formFile" (change)="capturarFile($event)">
         </div>
     </div>
 
     <div class="event-slider">
         <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }" class="default-left-padding">
             <ion-slide>
-                <ion-col class="ion-text-left">
+                <ion-col >
                     <ion-card>
-                        <ion-card-header class="ion-no-padding">
+                        <ion-card-header >
                             <img [src]="previsualizacion" alt="">
                         </ion-card-header>
                         <ion-card-content>
@@ -40,9 +43,9 @@
             </ion-slide>
 
             <ion-slide>
-                <ion-col class="ion-text-left">
+                <ion-col class=>
                     <ion-card>
-                        <ion-card-header class="ion-no-padding">
+                        <ion-card-header >
                             <img [src]="previsualizacion2" alt="">
                         </ion-card-header>
 

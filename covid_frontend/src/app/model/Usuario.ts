@@ -10,6 +10,6 @@ export class Usuario{
     password: string
     latitud: number
     longitud: number
-  roles: string[] = [];
+    roles: string[] = [];
 
 }

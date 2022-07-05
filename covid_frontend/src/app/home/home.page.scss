@@ -41,7 +41,7 @@ ion-content {
     }
     .event-slider {
         ion-slide {
-            width: 60%;
+            width: 50%;
             margin-right: 30px;
             ion-col {
                 padding-left: 0;
@@ -53,7 +53,8 @@ ion-content {
                     margin-top: 0;
                     ion-card-header {
                         img {
-                            width: 100%;
+                            max-width: 50%;
+                            height: auto;
                         }
                     }
                     ion-card-content {
@@ -69,8 +70,9 @@ ion-content {
             }
         }
     }
-    .swiper-slide {}
-    .nazi {
-        width: 75%;
+    .swiper-slide {
+        img {
+            width: 50%;
+        }
     }
 }
