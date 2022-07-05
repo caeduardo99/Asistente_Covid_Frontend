@@ -12,6 +12,7 @@ import { AuthenticateService } from '../services/authenticate.service';
 import { SwiperComponent } from 'swiper/angular';
 import { ViewEncapsulation } from '@angular/core';
 import { SwiperOptions } from 'swiper';
+import { LoadingController } from '@ionic/angular';
 import SwiperCore, { Pagination, EffectCube } from 'swiper';
 
 SwiperCore.use([Pagination, EffectCube]);
@@ -43,7 +44,8 @@ export class HomePage implements AfterContentChecked {
     public DomSanitizer: DomSanitizer,
     private alertController: AlertController,
     private menu: MenuController,
-    private authService: AuthenticateService
+    private authService: AuthenticateService,
+    public loadingCtrl: LoadingController
   ) {}
 
   ngAfterContentChecked() {
@@ -66,7 +68,7 @@ export class HomePage implements AfterContentChecked {
     this.swiper.swiperRef.allowTouchMove = this.touchAllowed;
   }
   ngOnInit() {}
-  // Capturamos el evento de "subir la radografia". Al subir una foto, es decir, seleccionarla
+  // Capturamos el evento de "subir la radiografia". Al subir una foto, es decir, seleccionarla
   // desde nuestros archivos, se ejecutará esta función, que lo que hace es obtener el archivo
   // que se ha subido desde el evento, y luego llamar a la función extraerBase64(), para que nos
   // devuelva la imagen codificada en Base64.
@@ -83,7 +85,6 @@ export class HomePage implements AfterContentChecked {
       try {
         const unsafeImg = window.URL.createObjectURL($event);
         const image = this.DomSanitizer.bypassSecurityTrustUrl(unsafeImg);
-
         const reader = new FileReader();
         reader.readAsDataURL($event);
         reader.onload = () => {
@@ -103,7 +104,7 @@ export class HomePage implements AfterContentChecked {
 
   subirArchivo(): any {
     try {
-      // this.loading = true;
+      this.showLoading();
       const formularioDeDatos = new FormData();
       this.archivos.forEach((archivo) => {
         formularioDeDatos.append('archivo', archivo);
@@ -116,12 +117,12 @@ export class HomePage implements AfterContentChecked {
         )
         .subscribe(
           (response) => {
+            this.loadingCtrl.dismiss();
             this.previsualizacion2 = null;
             this.previsualizacion2 = response['prediccion'];
             //   console.log(this.previsualizacion2);
             this.previsualizacion2 =
               'data:image/jpeg;base64,' + this.previsualizacion2;
-
             // this.previsualizacion2=response+"";
             // console.log(this.previsualizacion2);
           },
@@ -132,5 +133,15 @@ export class HomePage implements AfterContentChecked {
     } catch (e) {
       console.log('ERROR', e);
     }
+  }
+
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Cargando...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading ',
+    });
+
+    loading.present();
   }
 }

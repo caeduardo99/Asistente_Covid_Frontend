@@ -11,7 +11,7 @@ import { AuthenticateService } from '../services/authenticate.service';
 import { Storage } from '@ionic/storage-angular';
 import { Usuario } from '../model/usuario';
 import { Router } from '@angular/router';
-
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -52,7 +52,8 @@ export class LoginPage implements OnInit {
     private navCtrl: NavController,
     private storage: Storage,
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    public loadingCtrl: LoadingController
   ) {
     this.usuario = new Usuario();
     this.loginForm = this.formBuilder.group({
@@ -85,6 +86,7 @@ export class LoginPage implements OnInit {
   }
 
   login(event: Event): void {
+    this.showLoading();
     this.cargado = true;
     event.preventDefault();
 
@@ -93,6 +95,7 @@ export class LoginPage implements OnInit {
       this.usuario.password = this.loginForm.value.password;
       this.authService.getPosts(this.usuario).subscribe(
         (response) => {
+          this.loadingCtrl.dismiss();
           this.authService.guardarUsuario(response.access_token);
           this.authService.guardarToken(response.access_token);
           let usuario = this.authService.usuario;
@@ -127,6 +130,16 @@ export class LoginPage implements OnInit {
         }
       );
     }
+  }
+
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Iniciando sesión...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading ',
+    });
+
+    loading.present();
   }
   gotoRegister() {
     this.navCtrl.navigateForward('/register');
