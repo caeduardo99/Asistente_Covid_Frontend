@@ -125,6 +125,8 @@ export class HomePage implements AfterContentChecked {
               'data:image/jpeg;base64,' + this.previsualizacion2;
             // this.previsualizacion2=response+"";
             // console.log(this.previsualizacion2);
+
+            this.ngOnInit();
           },
           () => {
             alert('Error');
