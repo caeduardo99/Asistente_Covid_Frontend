@@ -154,6 +154,14 @@ export class RegisterPage implements OnInit {
     this._usuario.longitud=this.lon
     this.authService.addPost(this._usuario);
     this.registerForm.reset()
+    this.alertController
+    .create({
+      message: 'Registro de usario exitoso',
+      buttons: ['OK'],
+    })
+    .then((res) => {
+      res.present();
+    });
    
   }
 

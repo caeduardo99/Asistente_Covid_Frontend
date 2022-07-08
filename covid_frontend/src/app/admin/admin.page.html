@@ -1,0 +1,85 @@
+ <!-- <ion-header>
+  
+    <ion-title>
+      Test API IONIC
+    </ion-title>
+
+</ion-header>
+<ion-content padding>
+ <ion-row  class="post" *ngFor="let post of admin">
+  <ion-col> {{post.id}}</ion-col>
+  <ion-col> {{post.nombre}}</ion-col>
+  <ion-col> {{post.apellido}}</ion-col>
+  <ion-col> {{post.email}}</ion-col>
+  <ion-col> {{post.password}}</ion-col>
+</ion-row>
+
+
+ 
+<ion-content padding>
+  <ion-grid >
+    <ion-row>
+      <ion-col class="nombre" >
+        <p>Nombre</p>
+        <ion-row class="post" *ngFor="let post of admin"> 
+          <ion-col > {{post.nombre}} </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col>
+        <p>Apellido</p>
+        <ion-row class="post" *ngFor="let post of admin"> 
+          <ion-col > {{post.apellido}} </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col>
+        <p>Correo</p>
+        <ion-row class="post" *ngFor="let post of admin"> 
+          <ion-col > {{post.email}} </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col>
+        <p>Estado</p>
+        <ion-row class="post" *ngFor="let post of admin"> 
+          <ion-col > {{post.estado}} </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content> 
+</ion-content>  -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+<div class="row">
+  <ion-card class="col-5">
+  <div class="table">
+    <div>
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Email</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="post" *ngFor="let post of admin">
+              <td>{{post.id}}</td>
+              <td>{{post.nombre}}</td>
+              <td>{{post.apellido}}</td>
+              <td>{{post.email}}</td>
+              <td>{{post.estado}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+        
+      
+      </div>
+      
+  </ion-card>
+
+</div>
+
+

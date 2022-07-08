@@ -9,8 +9,8 @@ const validUser = {
   institucion: 'Clinica Santa Ines',
   direccion: 'Padre Aguirre',
   telefono: '0969034831',
-  email: 'soria1999@gmail.com',
-  emailconf: 'soria1999@gmail.com',
+  email: 'gg@gmail.com',
+  emailconf: 'gg@gmail.com',
   password:'8soptativa',
   passwordconf:'8soptativa'
 }
@@ -29,5 +29,6 @@ describe('inicio' ,() => {
     cy.get(':nth-child(8) > .item-interactive').type(validUser.emailconf) // valida la confirmacion email
     cy.get(':nth-child(9) > .item-interactive').type(validUser.password) // valida la password
     cy.get(':nth-child(10) > .item-interactive').type(validUser.passwordconf) // valida la confirmacion del password
+    cy.get('#Continuar')
   })  
 })

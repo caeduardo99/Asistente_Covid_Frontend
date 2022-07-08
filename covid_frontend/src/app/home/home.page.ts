@@ -120,13 +120,14 @@ export class HomePage implements AfterContentChecked {
             this.loadingCtrl.dismiss();
             this.previsualizacion2 = null;
             this.previsualizacion2 = response['prediccion'];
-            //   console.log(this.previsualizacion2);
+          //     console.log(this.previsualizacion2);
             this.previsualizacion2 =
               'data:image/jpeg;base64,' + this.previsualizacion2;
             // this.previsualizacion2=response+"";
-            // console.log(this.previsualizacion2);
+          //   console.log(this.previsualizacion2);
 
             this.ngOnInit();
+           // this.previsualizacion2.reset();
           },
           () => {
             alert('Error');

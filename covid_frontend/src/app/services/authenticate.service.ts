@@ -12,6 +12,7 @@ export class AuthenticateService {
   
   // Definición de variables para consumo de apis
   private _usuario: Usuario;
+  url = 'https://ia-backend-covid.herokuapp.com/api/userss';
   url1 = 'https://ia-backend-covid.herokuapp.com/api/usuario';
   url2 = "https://ia-backend-covid.herokuapp.com/"
   
@@ -155,22 +156,15 @@ export class AuthenticateService {
     return this.http.post(url,body); // POST  
   }
 
-
-
-  obtenerPrediction(url:string, body) {
-    let json = JSON.stringify(body);
-    let params = json;
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: this.token,
+  getAdmin(){
+    return new Promise(resolve=>{
+      this.http.get(this.url).subscribe(data=>{
+          resolve(data);
+      },error=>{
+        console.log(error);
+      });
     });
-    return this.http
-      .post(url ,  body)
-      .pipe(
-        map((data) => {
-          return data;
-        })
-      );
   }
+  
 
 }
