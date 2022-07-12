@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../model/Usuario';
 import { Geolocation ,Geoposition } from '@awesome-cordova-plugins/geolocation/ngx';
 import { map } from 'rxjs/operators';
+import {UsuarioI} from '../../app/model/usuario.interface'
 @Injectable({
   providedIn: 'root'
 })
@@ -78,6 +79,16 @@ export class AuthenticateService {
     });
   }
  
+  getSingleuUser(id):Observable<UsuarioI>{
+    // let urlEndpoint= this.url + "api/userss" + id;
+    let urlEndpoint= 'https://jsonplaceholder.typicode.com/posts/' + id;
+  return this.http.get<UsuarioI>(urlEndpoint);
+  }
+  putUsuario(form:UsuarioI):Observable<Response>{
+    return
+  }
+
+  
 
   // creacion metodo guardar usuario
   guardarUsuario(accessToken: string): void {

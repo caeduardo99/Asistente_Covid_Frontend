@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

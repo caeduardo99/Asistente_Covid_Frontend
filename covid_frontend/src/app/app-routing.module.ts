@@ -83,6 +83,10 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
   },
+  {
+    path: 'editar/:id',
+    loadChildren: () => import('./editar/editar.module').then( m => m.EditarPageModule)
+  },
 ];
 
 @NgModule({

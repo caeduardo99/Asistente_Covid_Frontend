@@ -28,6 +28,7 @@ export class AdminPage implements OnInit {
     }
 
     editarUsuario(id) {
-        console.log(id);
+       // console.log(id);
+       this.router.navigate(['editar', id])
     }
 }

@@ -1,0 +1,30 @@
+
+
+<ion-content>
+
+  <div class="container">
+    <form [formGroup]="editarForm" (ngSubmit)="postForm(editarForm.value)">
+      <div class="form-group"></div>
+    
+      
+      <ion-label >Id</ion-label>
+      <input type="text" class="form-control" placeholder="id" formControlName="id">
+
+          <ion-label >Title</ion-label>
+          <input type="text" class="form-control" placeholder="title" formControlName="title">
+          <div class="container continuar">
+            <ion-button type="submit" >Guardar</ion-button>
+          </div>
+    </form>
+
+  </div>
+  <br><br>
+  
+ 
+
+
+
+
+
+
+</ion-content>
