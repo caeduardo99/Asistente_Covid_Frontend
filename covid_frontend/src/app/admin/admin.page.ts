@@ -9,7 +9,7 @@ import { Usuario } from "../model/Usuario";
 })
 export class AdminPage implements OnInit {
     admin: any;
-    private _usuario: Usuario;
+
     constructor(
         private authService: AuthenticateService,
         private router: Router
@@ -20,7 +20,6 @@ export class AdminPage implements OnInit {
     }
 
     getPosts() {
-        //llamamos a la funcion getPost de nuestro servicio.
         this.authService.getAdmin().then((data) => {
             //   console.log(data);
             this.admin = data;
@@ -28,7 +27,7 @@ export class AdminPage implements OnInit {
     }
 
     editarUsuario(id) {
-       // console.log(id);
-       this.router.navigate(['editar', id])
+        // console.log(id);
+        this.router.navigate(["editar", id]);
     }
 }

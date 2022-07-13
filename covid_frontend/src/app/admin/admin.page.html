@@ -15,9 +15,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let post of admin" (click)="editarUsuario(post.id)">
-                    <td>{{post.id}}</td>
-                    <td>{{post.nombre}}</td>
+                <tr *ngFor="let post of admin" (click)="editarUsuario(post.PacienteId)">
+
+                    <td>{{post.PacienteId}}</td>
+                    <td>{{post.Nombre}}</td>
                     <td>{{post.apellido}}</td>
                     <td>{{post.email}}</td>
 

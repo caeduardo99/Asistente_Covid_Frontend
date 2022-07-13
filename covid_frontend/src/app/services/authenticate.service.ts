@@ -1,94 +1,94 @@
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../model/Usuario';
-import { Geolocation ,Geoposition } from '@awesome-cordova-plugins/geolocation/ngx';
+import {
+  Geolocation,
+  Geoposition,
+} from '@awesome-cordova-plugins/geolocation/ngx';
 import { map } from 'rxjs/operators';
-import {UsuarioI} from '../../app/model/usuario.interface'
+import { UsuarioI } from '../../app/model/usuario.interface';
+import { ResponseI } from '../../app/model/response.interface';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class AuthenticateService {
-  
   // Definición de variables para consumo de apis
   private _usuario: Usuario;
   url = 'https://ia-backend-covid.herokuapp.com/api/userss';
   url1 = 'https://ia-backend-covid.herokuapp.com/api/usuario';
-  url2 = "https://ia-backend-covid.herokuapp.com/"
-  
+  url2 = 'https://ia-backend-covid.herokuapp.com/';
+
   // url2 = "https://ia-backend-covid.herokuapp.com/"
   private _token: string;
-  lat:number
-  lon:number
+  lat: number;
+  lon: number;
 
-  constructor(public http: HttpClient,public geolocation:Geolocation) {
-    
-   }
+  constructor(public http: HttpClient, public geolocation: Geolocation) {}
 
-   // Creación del Metodo para el Registro del Usuario
-   addPost(data) {
-    
+  // Creación del Metodo para el Registro del Usuario
+  addPost(data) {
     return new Promise((resolve, reject) => {
-      const httpHeaders= new HttpHeaders({
-        "Content-Type": "application/json"})
-      this.http.post(this.url1, JSON.stringify(data),{headers: httpHeaders}).subscribe(response => {
-          resolve(response);
-        }, (error) => {
-          reject(error);
-        });
+      const httpHeaders = new HttpHeaders({
+        'Content-Type': 'application/json',
+      });
+      this.http
+        .post(this.url1, JSON.stringify(data), { headers: httpHeaders })
+        .subscribe(
+          (response) => {
+            resolve(response);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
     });
   }
-
-
- 
 
   public get usuario(): Usuario {
     if (this._usuario != null) {
       return this._usuario;
     } else if (
       this._usuario == null &&
-      sessionStorage.getItem("usuario") != null
+      sessionStorage.getItem('usuario') != null
     ) {
-      this._usuario = JSON.parse(sessionStorage.getItem("usuario")) as Usuario;
+      this._usuario = JSON.parse(sessionStorage.getItem('usuario')) as Usuario;
       return this._usuario;
     }
     return new Usuario();
   }
 
-
-  
   // Creacion metodo para el logeo del usuario con las credenciales del backend
   getPosts(usuario: Usuario) {
-    const urlEndpoint =  this.url2 + "oauth/token";
-    
-    const credenciales = btoa("angularapp" + ":" + "12345");
+    const urlEndpoint = this.url2 + 'oauth/token';
+
+    const credenciales = btoa('angularapp' + ':' + '12345');
 
     const httpHeaders = new HttpHeaders({
-      "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: "Basic " + credenciales,
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Basic ' + credenciales,
     });
 
     let params = new URLSearchParams();
-    params.set("grant_type", "password");
-    params.set("username", usuario.email);
-    params.set("password", usuario.password);
+    params.set('grant_type', 'password');
+    params.set('username', usuario.email);
+    params.set('password', usuario.password);
     console.log(params.toString());
     return this.http.post<any>(urlEndpoint, params.toString(), {
       headers: httpHeaders,
     });
   }
- 
-  getSingleuUser(id):Observable<UsuarioI>{
-    // let urlEndpoint= this.url + "api/userss" + id;
-    let urlEndpoint= 'https://jsonplaceholder.typicode.com/posts/' + id;
-  return this.http.get<UsuarioI>(urlEndpoint);
-  }
-  putUsuario(form:UsuarioI):Observable<Response>{
-    return
-  }
 
-  
+  getSingleuUser(id): Observable<UsuarioI> {
+    // let urlEndpoint= this.url + "api/userss" + id;
+    let urlEndpoint = 'https://api.solodata.es/pacientes?id=' + id;
+    return this.http.get<UsuarioI>(urlEndpoint);
+  }
+  putUsuario(form: UsuarioI): Observable<ResponseI> {
+    let urlEndpoint = 'https://api.solodata.es/pacientes';
+    return this.http.put<ResponseI>(urlEndpoint, form);
+    // return this.http.put<ResponseI>(urlEndpoint, form);
+  }
 
   // creacion metodo guardar usuario
   guardarUsuario(accessToken: string): void {
@@ -106,32 +106,28 @@ export class AuthenticateService {
     this._usuario.longitud = payload.lon;
     this._usuario.email = payload.email;
     this._usuario.password = payload.password;
-   
-    sessionStorage.setItem("usuario", JSON.stringify(this._usuario));
+
+    sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
   }
-
-  
-
 
   public get token(): string {
     if (this._token != null) {
       return this._token;
-    } else if (this._token == null && sessionStorage.getItem("token") != null) {
-      this._token = sessionStorage.getItem("token");
+    } else if (this._token == null && sessionStorage.getItem('token') != null) {
+      this._token = sessionStorage.getItem('token');
       return this._token;
     }
     return null;
   }
- 
 
- guardarToken(accessToken: string): void {
+  guardarToken(accessToken: string): void {
     this._token = accessToken;
-    sessionStorage.setItem("token", accessToken);
+    sessionStorage.setItem('token', accessToken);
   }
 
   obtenerDatosToken(accessToken: string): any {
     if (accessToken != null) {
-      return JSON.parse(atob(accessToken.split(".")[1]));
+      return JSON.parse(atob(accessToken.split('.')[1]));
     }
     return null;
   }
@@ -144,13 +140,12 @@ export class AuthenticateService {
     return false;
   }
 
-
   logout(): void {
     this._token = null;
     this._usuario = null;
     sessionStorage.clear();
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("usuario");
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('usuario');
   }
 
   hasRole(role: string): boolean {
@@ -160,22 +155,22 @@ export class AuthenticateService {
     return false;
   }
 
-
   //Metodo post imagen
-  public post(url:string, body){
-    
-    return this.http.post(url,body); // POST  
+  public post(url: string, body) {
+    return this.http.post(url, body); // POST
   }
 
-  getAdmin(){
-    return new Promise(resolve=>{
-      this.http.get(this.url).subscribe(data=>{
+  getAdmin() {
+    return new Promise((resolve) => {
+      this.http.get('https://api.solodata.es/pacientes?page=1').subscribe(
+        (data) => {
           resolve(data);
-      },error=>{
-        console.log(error);
-      });
+          //   console.log(data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     });
   }
-  
-
 }
