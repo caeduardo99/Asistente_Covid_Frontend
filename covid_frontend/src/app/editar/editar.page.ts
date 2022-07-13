@@ -32,7 +32,7 @@ export class EditarPage implements OnInit {
   ngOnInit(): void {
     let usuarioid = this.activatedrouter.snapshot.paramMap.get('id');
     //  console.log(usuarioid);
-    let token = this.getToken();
+    let token = '1f684c6523f0e2a36c6835490eddbb96';
     console.log(token);
     this.authService.getSingleuUser(usuarioid).subscribe((data) => {
       // console.log(data);
@@ -55,7 +55,7 @@ export class EditarPage implements OnInit {
   }
 
   postForm(form: UsuarioI) {
-    //console.log(form);
+    console.log(form);
     this.authService.putUsuario(form).subscribe((data) => {
       console.log(data);
     });
