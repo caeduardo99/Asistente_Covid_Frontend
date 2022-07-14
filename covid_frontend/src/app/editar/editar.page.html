@@ -1,72 +1,32 @@
+
+
 <ion-content>
 
-    <div class="container">
-        <form [formGroup]="editarForm" (ngSubmit)="postForm(editarForm.value)">
-            <!-- <div class="form-group"></div>
+  <div class="container">
+    <form [formGroup]="editarForm" (ngSubmit)="postForm(editarForm.value)">
+      <div class="form-group"></div>
+    
+          <ion-label >Nombre</ion-label>
+          <input type="text" class="form-control" placeholder="nombre" formControlName="nombre">
+          <ion-label >Apellido</ion-label>
+          <input type="text" class="form-control" placeholder="apellido" formControlName="apellido">
+          <ion-label >Email</ion-label>
+          <input type="text" class="form-control" placeholder="email" formControlName="email">
+          <ion-label >Estado</ion-label>
+          <input type="text" class="form-control" placeholder="estadp" formControlName="estado">
+          <div class="container continuar">
+            <ion-button type="submit" >Guardar</ion-button>
+          </div>
+    </form>
+
+  </div>
+  <br><br>
+  
+ 
 
 
-            <ion-label>Id</ion-label>
-            <input type="text" class="form-control" placeholder="Paciente" formControlName="pacienteId">
-
-            <ion-label>Title</ion-label>
-            <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
-            <br><br>
-            <div class="container continuar">
-                <ion-button type="submit">Guardar</ion-button>
-            </div> -->
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Nombre</label>
-                <input type="text" class="form-control" placeholder="Nombre del paciente" formControlName="nombre">
-            </div>
-
-            <div class="form-group">
-                <div class="col">
-                    <label for="exampleFormControlInput1">Direccion</label>
-                    <input type="text" class="form-control" placeholder="Direccion" formControlName="direccion">
-                </div>
-
-                <div class="form-group row">
-                    <div class="col">
-                        <label for="exampleFormControlInput1">DNI</label>
-                        <input type="text" class="form-control" placeholder="DNI" formControlName="dni">
-                    </div>
-
-                    <div class="col">
-                        <label for="exampleFormControlInput1">Codigo postal</label>
-                        <input type="text" class="form-control" placeholder="Codigo postal" formControlName="codigoPostal">
-                    </div>
-                </div>
 
 
-                <div class="col">
-                    <label for="exampleFormControlInput1">Telefono</label>
-                    <input type="text" class="form-control" placeholder="Telefono" formControlName="telefono">
-                </div>
-            </div>
 
-            <div class="form-group row">
-                <div class="col">
-                    <label for="exampleFormControlInput1">Fecha de nacimiento</label>
-                    <input type="text" class="form-control" placeholder="Fecha de nacimiento" formControlName="fechaNacimiento">
-                </div>
-
-
-                <div class="col">
-                    <label for="exampleFormControlInput1">Correo</label>
-                    <input type="text" class="form-control" placeholder="Correo" formControlName="correo">
-                </div>
-
-
-                <div class="col">
-                    <label for="exampleFormControlInput1">Género</label>
-                    <input type="text" class="form-control" placeholder="Genero" formControlName="genero">
-                </div>
-
-            </div>
-            <ion-button type="submit">nazi</ion-button>
-        </form>
-
-    </div>
-    <br><br>
 
 </ion-content>

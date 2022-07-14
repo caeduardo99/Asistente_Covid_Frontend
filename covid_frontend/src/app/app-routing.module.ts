@@ -87,6 +87,10 @@ const routes: Routes = [
     path: 'editar/:id',
     loadChildren: () => import('./editar/editar.module').then( m => m.EditarPageModule)
   },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
 ];
 
 @NgModule({

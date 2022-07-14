@@ -1,0 +1,34 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<ion-content>
+    <h3>Lista de Usuarios</h3><br>
+
+    <div class="container">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let post of admin" (click)="editarUsuario(post.id)">
+
+                    <td>{{post.id}}</td>
+                    <td>{{post.nombre}}</td>
+                    <td>{{post.apellido}}</td>
+                    <td>{{post.email}}</td>
+
+                    <ion-list>
+
+                        <ion-checkbox slot="end" [(ngModel)]="post.estado"></ion-checkbox>
+
+                    </ion-list>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ion-content>

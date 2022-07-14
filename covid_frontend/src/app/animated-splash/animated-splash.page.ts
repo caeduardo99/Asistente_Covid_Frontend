@@ -9,7 +9,7 @@ export class AnimatedSplashPage implements OnInit {
 
   constructor(public router:Router) { 
     setTimeout(()=>{
-      this.router.navigateByUrl('/admin');
+      this.router.navigateByUrl('/dashboard');
     },2000);
   }
 

@@ -9,13 +9,14 @@ import {
 import { map } from 'rxjs/operators';
 import { UsuarioI } from '../../app/model/usuario.interface';
 import { ResponseI } from '../../app/model/response.interface';
+import { UserI } from '../model/user.interface';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticateService {
   // Definición de variables para consumo de apis
   private _usuario: Usuario;
-  url = 'https://ia-backend-covid.herokuapp.com/api/userss';
+  url = 'https://ia-backend-covid.herokuapp.com/api/userss/';
   url1 = 'https://ia-backend-covid.herokuapp.com/api/usuario';
   url2 = 'https://ia-backend-covid.herokuapp.com/';
 
@@ -79,13 +80,18 @@ export class AuthenticateService {
     });
   }
 
-  getSingleuUser(id): Observable<UsuarioI> {
-    // let urlEndpoint= this.url + "api/userss" + id;
-    let urlEndpoint = 'https://api.solodata.es/pacientes?id=' + id;
-    return this.http.get<UsuarioI>(urlEndpoint);
+  getSingleuUser(id): Observable<UserI> {
+     let urlEndpoint= this.url + "api/userss?id=" + id;
+ //   let urlEndpoint = 'https://api.solodata.es/pacientes?id=' + id;
+    return this.http.get<UserI>(urlEndpoint);
   }
   putUsuario(form: UsuarioI): Observable<ResponseI> {
     let urlEndpoint = 'https://api.solodata.es/pacientes';
+    return this.http.put<ResponseI>(urlEndpoint, form);
+    // return this.http.put<ResponseI>(urlEndpoint, form);
+  }
+  putUser(form: UserI): Observable<ResponseI> {
+    let urlEndpoint = this.url2 + 'api/userss';
     return this.http.put<ResponseI>(urlEndpoint, form);
     // return this.http.put<ResponseI>(urlEndpoint, form);
   }
@@ -163,6 +169,19 @@ export class AuthenticateService {
   getAdmin() {
     return new Promise((resolve) => {
       this.http.get('https://api.solodata.es/pacientes?page=1').subscribe(
+        (data) => {
+          resolve(data);
+          //   console.log(data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    });
+  }
+  getUser() {
+    return new Promise((resolve) => {
+      this.http.get(this.url2+'api/userss').subscribe(
         (data) => {
           resolve(data);
           //   console.log(data);
