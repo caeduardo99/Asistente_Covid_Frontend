@@ -66,7 +66,8 @@ export class AuthenticateService {
     const credenciales = btoa('angularapp' + ':' + '12345');
 
     const httpHeaders = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded',
+
+      'Content-Type': 'application/x-www-form-urlencoded', 
       Authorization: 'Basic ' + credenciales,
     });
 

@@ -76,6 +76,7 @@ export class HomePage implements AfterContentChecked {
     const archivoCapturado = event.target.files[0];
     this.extraerBase64(archivoCapturado).then((imagen: any) => {
       this.previsualizacion = imagen.base;
+      
     });
     this.archivos.push(archivoCapturado);
   }

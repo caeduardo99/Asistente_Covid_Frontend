@@ -11,40 +11,40 @@
   <form [formGroup]="registerForm" (ngSubmit)="guardarDatos()">
     <ion-card id="registerForm">
       <ion-card-header>
-        <ion-card-title>Registro</ion-card-title>
+        <ion-card-title>Sign up</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <ion-card>
-          <ion-item><ion-input  formControlName="cedula" placeholder="Cédula"></ion-input></ion-item>
+          <ion-item><ion-input  formControlName="cedula" placeholder="ID"></ion-input></ion-item>
       </ion-card>
         <ion-card>
-          <ion-item><ion-input formControlName="nombre"  placeholder="Nombre"></ion-input></ion-item>
+          <ion-item><ion-input formControlName="nombre"  placeholder="First names"></ion-input></ion-item>
       </ion-card>
       <ion-card>
-        <ion-item><ion-input  formControlName="apellido" placeholder="Apellidos"></ion-input></ion-item>
+        <ion-item><ion-input  formControlName="apellido" placeholder="Last names"></ion-input></ion-item>
     </ion-card>
     <ion-card>
-      <ion-item><ion-input formControlName="institucion"   placeholder="Institución"></ion-input></ion-item>
+      <ion-item><ion-input formControlName="institucion"   placeholder="Institution"></ion-input></ion-item>
     </ion-card>
      <ion-card>
-     <ion-item><ion-input  formControlName="direccion" placeholder="Dirección"></ion-input></ion-item>
+     <ion-item><ion-input  formControlName="direccion" placeholder="Address"></ion-input></ion-item>
      </ion-card>
      <ion-card>
-      <ion-item><ion-input formControlName="telefono"  placeholder="Teléfono"></ion-input></ion-item>
+      <ion-item><ion-input formControlName="telefono"  placeholder="Phone Number"></ion-input></ion-item>
       </ion-card>
       <ion-card>
-        <ion-item><ion-input  formControlName="email" placeholder="Email"></ion-input></ion-item>
+        <ion-item><ion-input  formControlName="email" placeholder="E-mail"></ion-input></ion-item>
       </ion-card>
       <ion-card>
-        <ion-item><ion-input formControlName="repeatemail"  placeholder="Confirmar email"></ion-input></ion-item>
+        <ion-item><ion-input formControlName="repeatemail"  placeholder="Confirm e-mail"></ion-input></ion-item>
       </ion-card>
       <ion-card>
         <ion-item><ion-input type="password" formControlName="password" placeholder="Password"></ion-input></ion-item>
       </ion-card>
       <ion-card>
-        <ion-item><ion-input type="password" formControlName="repeatepassword" placeholder="Confirmar password"></ion-input></ion-item>
+        <ion-item><ion-input type="password" formControlName="repeatepassword" placeholder="Confirm password"></ion-input></ion-item>
       </ion-card>
-      <ion-button type="enter" id="Continuar" type="reset" shape="round" type= "submit" expand="block">Continuar</ion-button>
+      <ion-button type="enter" id="Continuar" type="reset" shape="round" type= "submit" expand="block">Continue</ion-button>
       </ion-card-content>
       <div class="validation-error">
         

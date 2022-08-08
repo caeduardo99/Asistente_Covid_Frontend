@@ -13,15 +13,14 @@
     <div class="banner">
         <img src="../../assets/images/home_img.webp" />
         <div class="caption ion-padding">
-            Asistente de <br> COVID 19
+            Assistant to <br> COVID 19
         </div>
     </div>
     <div class="input">
-        <div class="seleccion">
-            <!-- <input type="file" (change)="capturarFile($event)"> -->
+        <div class="input-group mb-3">
             
-            <input class="form-control" type="file" id="formFile" (change)="capturarFile($event)">
-        </div>
+            <input type="file" class="form-control" id="inputGroupFile01" (change)="capturarFile($event)">
+          </div>
     </div>
 
     <div class="event-slider">
@@ -33,9 +32,9 @@
                             <img [src]="previsualizacion" alt="">
                         </ion-card-header>
                         <ion-card-content>
-                            <h2 class="eventname">Radiografia de torax</h2>
+                            <h2 class="eventname">Chest X-ray</h2>
                             <div class="additional-info">
-                                <ion-button (click)="subirArchivo()">Upload</ion-button>
+                                <ion-button (click)="subirArchivo()">Predict</ion-button>
                             </div>
                         </ion-card-content>
                     </ion-card>
@@ -51,9 +50,9 @@
 
                         <ion-card-content>
 
-                            <h2 class="eventname">Resultado</h2>
+                            <h2 class="eventname">Result</h2>
                             <p class="location">
-                                <ion-icon name="pulse-outline"></ion-icon> Si tiene o no tiene covid</p>
+                                <ion-icon name="pulse-outline"></ion-icon>COVID-19</p>
 
 
                         </ion-card-content>
