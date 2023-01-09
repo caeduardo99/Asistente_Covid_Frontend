@@ -44,12 +44,6 @@ export class EditarPage implements OnInit {
         apellido: this.datosusuario.apellido,
         email: this.datosusuario.email,
         estado: this.datosusuario.estado,
-        // codigoPostal: this.datosusuario.CodigoPostal,
-        // genero: this.datosusuario.Genero,
-        // telefono: this.datosusuario.Telefono,
-        // token: token,
-        // pacienteId: this.datosusuario.PacienteId,
-        // fechaNacimiento: this.datosusuario.FechaNacimiento,
       });
       // console.log(this.editarForm.value);
     });
@@ -57,9 +51,9 @@ export class EditarPage implements OnInit {
 
   postForm(form: UserI) {
     console.log(form);
-   // this.authService.putUser(form).subscribe((data) => {
-  //    console.log(data);
-   // });
+   this.authService.putUser(form).subscribe((data) => {
+     console.log(data);
+   });
   }
   getToken() {
     return localStorage.getItem('token');

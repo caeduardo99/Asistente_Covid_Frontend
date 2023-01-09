@@ -16,11 +16,11 @@ import { UserI } from '../model/user.interface';
 export class AuthenticateService {
   // Definición de variables para consumo de apis
   private _usuario: Usuario;
-  url = 'https://ia-backend-covid.herokuapp.com/api/userss/';
-  url1 = 'https://ia-backend-covid.herokuapp.com/api/usuario';
-  url2 = 'https://ia-backend-covid.herokuapp.com/';
+  url = 'http://localhost:8080/api/userss/';
+  url1 = 'http://localhost:8080/api/usuario';
+  // url2 = 'http://localhost:8080/api/usuario/cedula';
 
-  // url2 = "https://ia-backend-covid.herokuapp.com/"
+  url2 = "http://localhost:8080/"
   private _token: string;
   lat: number;
   lon: number;
@@ -63,7 +63,7 @@ export class AuthenticateService {
   getPosts(usuario: Usuario) {
     const urlEndpoint = this.url2 + 'oauth/token';
 
-    const credenciales = btoa('angularapp' + ':' + '12345');
+    const credenciales = btoa('covidapp' + ':' + '12345');
 
     const httpHeaders = new HttpHeaders({
 
@@ -82,17 +82,11 @@ export class AuthenticateService {
   }
 
   getSingleuUser(id): Observable<UserI> {
-     let urlEndpoint= this.url + "api/userss?id=" + id;
- //   let urlEndpoint = 'https://api.solodata.es/pacientes?id=' + id;
+     let urlEndpoint= this.url + "?id=" + id;
     return this.http.get<UserI>(urlEndpoint);
   }
-  putUsuario(form: UsuarioI): Observable<ResponseI> {
-    let urlEndpoint = 'https://api.solodata.es/pacientes';
-    return this.http.put<ResponseI>(urlEndpoint, form);
-    // return this.http.put<ResponseI>(urlEndpoint, form);
-  }
   putUser(form: UserI): Observable<ResponseI> {
-    let urlEndpoint = this.url2 + 'api/userss';
+    let urlEndpoint = this.url2 + 'api/usuario/0105885537';
     return this.http.put<ResponseI>(urlEndpoint, form);
     // return this.http.put<ResponseI>(urlEndpoint, form);
   }
@@ -167,25 +161,13 @@ export class AuthenticateService {
     return this.http.post(url, body); // POST
   }
 
-  getAdmin() {
-    return new Promise((resolve) => {
-      this.http.get('https://api.solodata.es/pacientes?page=1').subscribe(
-        (data) => {
-          resolve(data);
-          //   console.log(data);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    });
-  }
+  
   getUser() {
     return new Promise((resolve) => {
       this.http.get(this.url2+'api/userss').subscribe(
         (data) => {
           resolve(data);
-          //   console.log(data);
+             console.log(data);
         },
         (error) => {
           console.log(error);

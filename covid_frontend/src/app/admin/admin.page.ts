@@ -20,7 +20,7 @@ export class AdminPage implements OnInit {
     }
 
     getPosts() {
-        this.authService.getAdmin().then((data) => {
+        this.authService.getUser().then((data) => {
             //   console.log(data);
             this.admin = data;
         });
