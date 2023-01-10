@@ -26,7 +26,7 @@ export class DashboardPage implements OnInit {
   }
   editarUsuario(id){
     console.log(id)
-    // this.router.navigate(["editar", id])
+    this.router.navigate(["editar", id])
   }
 
 

@@ -18,7 +18,6 @@ export class AuthenticateService {
   private _usuario: Usuario;
   url = 'http://localhost:8080/api/userss/';
   url1 = 'http://localhost:8080/api/usuario';
-  // url2 = 'http://localhost:8080/api/usuario/cedula';
 
   url2 = "http://localhost:8080/"
   private _token: string;
@@ -86,7 +85,7 @@ export class AuthenticateService {
     return this.http.get<UserI>(urlEndpoint);
   }
   putUser(form: UserI): Observable<ResponseI> {
-    let urlEndpoint = this.url2 + 'api/usuario/0105885537';
+    let urlEndpoint = this.url2 + 'api/usuario/0106111792';
     return this.http.put<ResponseI>(urlEndpoint, form);
     // return this.http.put<ResponseI>(urlEndpoint, form);
   }

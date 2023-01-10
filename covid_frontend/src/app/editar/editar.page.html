@@ -1,21 +1,21 @@
 
 
 <ion-content>
-
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <div class="container">
     <form [formGroup]="editarForm" (ngSubmit)="postForm(editarForm.value)">
       <div class="form-group"></div>
     
-          <ion-label >Nombre</ion-label>
+          <!-- <ion-label >Nombre</ion-label>
           <input type="text" class="form-control" placeholder="nombre" formControlName="nombre">
           <ion-label >Apellido</ion-label>
           <input type="text" class="form-control" placeholder="apellido" formControlName="apellido">
           <ion-label >Email</ion-label>
-          <input type="text" class="form-control" placeholder="email" formControlName="email">
+          <input type="text" class="form-control" placeholder="email" formControlName="email"> -->
           <ion-label >Estado</ion-label>
           <input type="text" class="form-control" placeholder="estado" formControlName="estado">
           <div class="container continuar">
-            <ion-button type="submit" >Guardar</ion-button>
+            <ion-button  type="submit" >Guardar</ion-button>
           </div>
     </form>
 

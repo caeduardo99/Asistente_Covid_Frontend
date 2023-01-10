@@ -113,7 +113,7 @@ export class HomePage implements AfterContentChecked {
 
       this.authService
         .post(
-          'https://ia-backend-covid.herokuapp.com/api/upload',
+          'http://localhost:8080/api/upload',
           formularioDeDatos
         )
         .subscribe(
